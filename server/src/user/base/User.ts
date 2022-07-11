@@ -18,12 +18,12 @@ import { Type } from "class-transformer";
 class User {
   @ApiProperty({
     required: false,
-    type: () => Branch,
+    type: () => [Branch],
   })
   @ValidateNested()
   @Type(() => Branch)
   @IsOptional()
-  branches?: Branch;
+  branches?: Array<Branch>;
 
   @ApiProperty({
     required: true,

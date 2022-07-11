@@ -72,11 +72,14 @@ export class UserServiceBase {
     return this.prisma.user.delete(args);
   }
 
-  async getBranches(parentId: string): Promise<Branch | null> {
+  async findBranches(
+    parentId: string,
+    args: Prisma.BranchFindManyArgs
+  ): Promise<Branch[]> {
     return this.prisma.user
       .findUnique({
         where: { id: parentId },
       })
-      .branches();
+      .branches(args);
   }
 }

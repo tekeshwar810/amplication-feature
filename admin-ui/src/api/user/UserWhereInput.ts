@@ -1,9 +1,9 @@
-import { BranchWhereUniqueInput } from "../branch/BranchWhereUniqueInput";
+import { BranchListRelationFilter } from "../branch/BranchListRelationFilter";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 
 export type UserWhereInput = {
-  branches?: BranchWhereUniqueInput;
+  branches?: BranchListRelationFilter;
   email?: StringFilter;
   firstName?: StringNullableFilter;
   id?: StringFilter;

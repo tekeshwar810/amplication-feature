@@ -8,7 +8,7 @@ generator client {
 }
 
 model User {
-  branches  Branch
+  branches  Branch[]
   createdAt DateTime @default(now())
   email     String   @unique
   firstName String?

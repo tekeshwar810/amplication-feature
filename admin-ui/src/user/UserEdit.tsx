@@ -4,11 +4,10 @@ import {
   Edit,
   SimpleForm,
   EditProps,
-  ReferenceInput,
-  SelectInput,
+  ReferenceArrayInput,
+  SelectArrayInput,
   TextInput,
   PasswordInput,
-  SelectArrayInput,
 } from "react-admin";
 
 import { BranchTitle } from "../branch/BranchTitle";
@@ -18,9 +17,14 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
   return (
     <Edit {...props}>
       <SimpleForm>
-        <ReferenceInput source="branch.id" reference="Branch" label="branches">
-          <SelectInput optionText={BranchTitle} />
-        </ReferenceInput>
+        <ReferenceArrayInput
+          source="branches"
+          reference="Branch"
+          parse={(value: any) => value && value.map((v: any) => ({ id: v }))}
+          format={(value: any) => value && value.map((v: any) => v.id)}
+        >
+          <SelectArrayInput optionText={BranchTitle} />
+        </ReferenceArrayInput>
         <TextInput label="email" source="email" type="email" />
         <TextInput label="First Name" source="firstName" />
         <TextInput label="Last Name" source="lastName" />
