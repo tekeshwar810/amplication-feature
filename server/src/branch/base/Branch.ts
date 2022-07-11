@@ -11,9 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsDate, ValidateNested } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
 import { User } from "../../user/base/User";
+import { Type } from "class-transformer";
 @ObjectType()
 class Branch {
   @ApiProperty({
@@ -37,6 +37,15 @@ class Branch {
     nullable: true,
   })
   branchCode!: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: () => User,
+  })
+  @ValidateNested()
+  @Type(() => User)
+  @IsOptional()
+  branchmanagerid?: User | null;
 
   @ApiProperty({
     required: false,
@@ -64,15 +73,6 @@ class Branch {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => User,
-  })
-  @ValidateNested()
-  @Type(() => User)
-  @IsOptional()
-  managerid?: User | null;
 
   @ApiProperty({
     required: true,

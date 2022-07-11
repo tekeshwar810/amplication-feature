@@ -1,13 +1,11 @@
-import { BranchCreateNestedManyWithoutUsersInput } from "./BranchCreateNestedManyWithoutUsersInput";
-import { ProductCreateNestedManyWithoutUsersInput } from "./ProductCreateNestedManyWithoutUsersInput";
+import { BranchWhereUniqueInput } from "../branch/BranchWhereUniqueInput";
 
 export type UserCreateInput = {
-  branches?: BranchCreateNestedManyWithoutUsersInput;
+  branches?: BranchWhereUniqueInput;
   email: string;
   firstName?: string | null;
   lastName?: string | null;
   password: string;
-  products?: ProductCreateNestedManyWithoutUsersInput;
   roles: Array<string>;
   username: string;
 };

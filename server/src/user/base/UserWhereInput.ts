@@ -11,25 +11,24 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { BranchListRelationFilter } from "../../branch/base/BranchListRelationFilter";
+import { BranchWhereUniqueInput } from "../../branch/base/BranchWhereUniqueInput";
 import { ValidateNested, IsOptional } from "class-validator";
 import { Type } from "class-transformer";
 import { StringFilter } from "../../util/StringFilter";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { ProductListRelationFilter } from "../../product/base/ProductListRelationFilter";
 @InputType()
 class UserWhereInput {
   @ApiProperty({
     required: false,
-    type: () => BranchListRelationFilter,
+    type: () => BranchWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => BranchListRelationFilter)
+  @Type(() => BranchWhereUniqueInput)
   @IsOptional()
-  @Field(() => BranchListRelationFilter, {
+  @Field(() => BranchWhereUniqueInput, {
     nullable: true,
   })
-  branches?: BranchListRelationFilter;
+  branches?: BranchWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -74,18 +73,6 @@ class UserWhereInput {
     nullable: true,
   })
   lastName?: StringNullableFilter;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProductListRelationFilter,
-  })
-  @ValidateNested()
-  @Type(() => ProductListRelationFilter)
-  @IsOptional()
-  @Field(() => ProductListRelationFilter, {
-    nullable: true,
-  })
-  products?: ProductListRelationFilter;
 
   @ApiProperty({
     required: false,

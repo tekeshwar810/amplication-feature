@@ -46,25 +46,13 @@ export class ProductControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: ProductCreateInput): Promise<Product> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        userid: {
-          connect: data.userid,
-        },
-      },
+      data: data,
       select: {
         createdAt: true,
         description: true,
         id: true,
         name: true,
         updatedAt: true,
-
-        userid: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -89,12 +77,6 @@ export class ProductControllerBase {
         id: true,
         name: true,
         updatedAt: true,
-
-        userid: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
   }
@@ -120,12 +102,6 @@ export class ProductControllerBase {
         id: true,
         name: true,
         updatedAt: true,
-
-        userid: {
-          select: {
-            id: true,
-          },
-        },
       },
     });
     if (result === null) {
@@ -153,25 +129,13 @@ export class ProductControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          userid: {
-            connect: data.userid,
-          },
-        },
+        data: data,
         select: {
           createdAt: true,
           description: true,
           id: true,
           name: true,
           updatedAt: true,
-
-          userid: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {
@@ -205,12 +169,6 @@ export class ProductControllerBase {
           id: true,
           name: true,
           updatedAt: true,
-
-          userid: {
-            select: {
-              id: true,
-            },
-          },
         },
       });
     } catch (error) {

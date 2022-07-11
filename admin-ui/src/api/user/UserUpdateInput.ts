@@ -1,13 +1,11 @@
-import { BranchUpdateManyWithoutUsersInput } from "./BranchUpdateManyWithoutUsersInput";
-import { ProductUpdateManyWithoutUsersInput } from "./ProductUpdateManyWithoutUsersInput";
+import { BranchWhereUniqueInput } from "../branch/BranchWhereUniqueInput";
 
 export type UserUpdateInput = {
-  branches?: BranchUpdateManyWithoutUsersInput;
+  branches?: BranchWhereUniqueInput;
   email?: string;
   firstName?: string | null;
   lastName?: string | null;
   password?: string;
-  products?: ProductUpdateManyWithoutUsersInput;
   roles?: Array<string>;
   username?: string;
 };

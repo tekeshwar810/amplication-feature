@@ -5,9 +5,7 @@ import {
   ShowProps,
   DateField,
   TextField,
-  ReferenceField,
 } from "react-admin";
-import { USER_TITLE_FIELD } from "../user/UserTitle";
 
 export const ProductShow = (props: ShowProps): React.ReactElement => {
   return (
@@ -18,9 +16,6 @@ export const ProductShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="userid" source="user.id" reference="User">
-          <TextField source={USER_TITLE_FIELD} />
-        </ReferenceField>
       </SimpleShowLayout>
     </Show>
   );

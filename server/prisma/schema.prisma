@@ -8,28 +8,27 @@ generator client {
 }
 
 model User {
-  branches  Branch[]
-  createdAt DateTime  @default(now())
-  email     String    @unique
+  branches  Branch
+  createdAt DateTime @default(now())
+  email     String   @unique
   firstName String?
-  id        String    @id @default(cuid())
+  id        String   @id @default(cuid())
   lastName  String?
   password  String
-  products  Product[]
   roles     String[]
-  updatedAt DateTime  @updatedAt
-  username  String    @unique
+  updatedAt DateTime @updatedAt
+  username  String   @unique
 }
 
 model Branch {
-  address     String?
-  branchCode  String?
-  branchName  String?
-  createdAt   DateTime @default(now())
-  id          String   @id @default(cuid())
-  managerid   User?    @relation(fields: [manageridId], references: [id])
-  manageridId String?
-  updatedAt   DateTime @updatedAt
+  address           String?
+  branchCode        String?
+  branchmanagerid   User?    @relation(fields: [branchmanageridId], references: [id])
+  branchmanageridId String?
+  branchName        String?
+  createdAt         DateTime @default(now())
+  id                String   @id @default(cuid())
+  updatedAt         DateTime @updatedAt
 }
 
 model Product {
@@ -38,8 +37,6 @@ model Product {
   id          String   @id @default(cuid())
   name        String
   updatedAt   DateTime @updatedAt
-  userid      User     @relation(fields: [useridId], references: [id])
-  useridId    String
 }
 
 model Role {

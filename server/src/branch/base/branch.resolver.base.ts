@@ -96,9 +96,9 @@ export class BranchResolverBase {
       data: {
         ...args.data,
 
-        managerid: args.data.managerid
+        branchmanagerid: args.data.branchmanagerid
           ? {
-              connect: args.data.managerid,
+              connect: args.data.branchmanagerid,
             }
           : undefined,
       },
@@ -121,9 +121,9 @@ export class BranchResolverBase {
         data: {
           ...args.data,
 
-          managerid: args.data.managerid
+          branchmanagerid: args.data.branchmanagerid
             ? {
-                connect: args.data.managerid,
+                connect: args.data.branchmanagerid,
               }
             : undefined,
         },
@@ -166,8 +166,10 @@ export class BranchResolverBase {
     action: "read",
     possession: "any",
   })
-  async managerid(@graphql.Parent() parent: Branch): Promise<User | null> {
-    const result = await this.service.getManagerid(parent.id);
+  async branchmanagerid(
+    @graphql.Parent() parent: Branch
+  ): Promise<User | null> {
+    const result = await this.service.getBranchmanagerid(parent.id);
 
     if (!result) {
       return null;

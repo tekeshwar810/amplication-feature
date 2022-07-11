@@ -43,6 +43,15 @@ class BranchOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  branchmanageridId?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   branchName?: SortOrder;
 
   @ApiProperty({
@@ -62,15 +71,6 @@ class BranchOrderByInput {
     nullable: true,
   })
   id?: SortOrder;
-
-  @ApiProperty({
-    required: false,
-    enum: ["asc", "desc"],
-  })
-  @Field(() => SortOrder, {
-    nullable: true,
-  })
-  manageridId?: SortOrder;
 
   @ApiProperty({
     required: false,

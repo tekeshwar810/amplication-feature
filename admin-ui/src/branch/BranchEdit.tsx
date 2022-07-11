@@ -15,10 +15,14 @@ export const BranchEdit = (props: EditProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="address" multiline source="address" />
         <TextInput label="branchCode" source="branchCode" />
-        <TextInput label="branchName" source="branchName" />
-        <ReferenceInput source="user.id" reference="User" label="managerid">
+        <ReferenceInput
+          source="user.id"
+          reference="User"
+          label="branchmanagerid"
+        >
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
+        <TextInput label="branchName" source="branchName" />
       </SimpleForm>
     </Edit>
   );
