@@ -46,25 +46,10 @@ export class BranchControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: BranchCreateInput): Promise<Branch> {
     return await this.service.create({
-      data: {
-        ...data,
-
-        branchmanagerid: data.branchmanagerid
-          ? {
-              connect: data.branchmanagerid,
-            }
-          : undefined,
-      },
+      data: data,
       select: {
         address: true,
         branchCode: true,
-
-        branchmanagerid: {
-          select: {
-            id: true,
-          },
-        },
-
         branchName: true,
         createdAt: true,
         id: true,
@@ -90,13 +75,6 @@ export class BranchControllerBase {
       select: {
         address: true,
         branchCode: true,
-
-        branchmanagerid: {
-          select: {
-            id: true,
-          },
-        },
-
         branchName: true,
         createdAt: true,
         id: true,
@@ -123,13 +101,6 @@ export class BranchControllerBase {
       select: {
         address: true,
         branchCode: true,
-
-        branchmanagerid: {
-          select: {
-            id: true,
-          },
-        },
-
         branchName: true,
         createdAt: true,
         id: true,
@@ -161,25 +132,10 @@ export class BranchControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: {
-          ...data,
-
-          branchmanagerid: data.branchmanagerid
-            ? {
-                connect: data.branchmanagerid,
-              }
-            : undefined,
-        },
+        data: data,
         select: {
           address: true,
           branchCode: true,
-
-          branchmanagerid: {
-            select: {
-              id: true,
-            },
-          },
-
           branchName: true,
           createdAt: true,
           id: true,
@@ -214,13 +170,6 @@ export class BranchControllerBase {
         select: {
           address: true,
           branchCode: true,
-
-          branchmanagerid: {
-            select: {
-              id: true,
-            },
-          },
-
           branchName: true,
           createdAt: true,
           id: true,

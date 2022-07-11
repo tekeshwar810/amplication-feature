@@ -11,23 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { BranchUpdateManyWithoutUsersInput } from "./BranchUpdateManyWithoutUsersInput";
-import { ValidateNested, IsOptional, IsString } from "class-validator";
-import { Type } from "class-transformer";
+import { IsString, IsOptional } from "class-validator";
 @InputType()
 class UserUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: () => BranchUpdateManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => BranchUpdateManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => BranchUpdateManyWithoutUsersInput, {
-    nullable: true,
-  })
-  branches?: BranchUpdateManyWithoutUsersInput;
-
   @ApiProperty({
     required: false,
     type: String,

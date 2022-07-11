@@ -8,7 +8,6 @@ generator client {
 }
 
 model User {
-  branches  Branch[]
   createdAt DateTime @default(now())
   email     String   @unique
   firstName String?
@@ -21,14 +20,12 @@ model User {
 }
 
 model Branch {
-  address           String?
-  branchCode        String?
-  branchmanagerid   User?    @relation(fields: [branchmanageridId], references: [id])
-  branchmanageridId String?
-  branchName        String?
-  createdAt         DateTime @default(now())
-  id                String   @id @default(cuid())
-  updatedAt         DateTime @updatedAt
+  address    String?
+  branchCode String?
+  branchName String?
+  createdAt  DateTime @default(now())
+  id         String   @id @default(cuid())
+  updatedAt  DateTime @updatedAt
 }
 
 model Product {

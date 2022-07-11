@@ -1,7 +1,4 @@
-import { BranchUpdateManyWithoutUsersInput } from "./BranchUpdateManyWithoutUsersInput";
-
 export type UserUpdateInput = {
-  branches?: BranchUpdateManyWithoutUsersInput;
   email?: string;
   firstName?: string | null;
   lastName?: string | null;
