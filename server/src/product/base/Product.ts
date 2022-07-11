@@ -65,6 +65,6 @@ class Product {
   })
   @ValidateNested()
   @Type(() => User)
-  userId?: User;
+  userid?: User;
 }
 export { Product };

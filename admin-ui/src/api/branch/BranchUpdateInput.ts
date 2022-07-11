@@ -1,8 +1,8 @@
-import { UserUpdateManyWithoutBranchesInput } from "./UserUpdateManyWithoutBranchesInput";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 
 export type BranchUpdateInput = {
   address?: string | null;
   branchCode?: string | null;
   branchName?: string | null;
-  userId?: UserUpdateManyWithoutBranchesInput;
+  managerid?: UserWhereUniqueInput | null;
 };

@@ -100,8 +100,8 @@ export class ProductResolverBase {
       data: {
         ...args.data,
 
-        userId: {
-          connect: args.data.userId,
+        userid: {
+          connect: args.data.userid,
         },
       },
     });
@@ -123,8 +123,8 @@ export class ProductResolverBase {
         data: {
           ...args.data,
 
-          userId: {
-            connect: args.data.userId,
+          userid: {
+            connect: args.data.userid,
           },
         },
       });
@@ -166,8 +166,8 @@ export class ProductResolverBase {
     action: "read",
     possession: "any",
   })
-  async userId(@graphql.Parent() parent: Product): Promise<User | null> {
-    const result = await this.service.getUserId(parent.id);
+  async userid(@graphql.Parent() parent: Product): Promise<User | null> {
+    const result = await this.service.getUserid(parent.id);
 
     if (!result) {
       return null;

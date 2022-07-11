@@ -42,6 +42,6 @@ class ProductCreateInput {
   @ValidateNested()
   @Type(() => UserWhereUniqueInput)
   @Field(() => UserWhereUniqueInput)
-  userId!: UserWhereUniqueInput;
+  userid!: UserWhereUniqueInput;
 }
 export { ProductCreateInput };

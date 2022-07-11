@@ -61,6 +61,6 @@ class ProductWhereInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  userId?: UserWhereUniqueInput;
+  userid?: UserWhereUniqueInput;
 }
 export { ProductWhereInput };

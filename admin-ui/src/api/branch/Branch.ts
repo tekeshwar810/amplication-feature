@@ -6,6 +6,6 @@ export type Branch = {
   branchName: string | null;
   createdAt: Date;
   id: string;
+  managerid?: User | null;
   updatedAt: Date;
-  userId?: Array<User>;
 };

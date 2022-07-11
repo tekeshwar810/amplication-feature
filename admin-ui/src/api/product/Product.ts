@@ -6,5 +6,5 @@ export type Product = {
   id: string;
   name: string;
   updatedAt: Date;
-  userId?: User;
+  userid?: User;
 };

@@ -18,7 +18,7 @@ export const ProductShow = (props: ShowProps): React.ReactElement => {
         <TextField label="ID" source="id" />
         <TextField label="name" source="name" />
         <DateField source="updatedAt" label="Updated At" />
-        <ReferenceField label="userId" source="user.id" reference="User">
+        <ReferenceField label="userid" source="user.id" reference="User">
           <TextField source={USER_TITLE_FIELD} />
         </ReferenceField>
       </SimpleShowLayout>

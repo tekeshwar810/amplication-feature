@@ -19,12 +19,12 @@ import { Product } from "../../product/base/Product";
 class User {
   @ApiProperty({
     required: false,
-    type: () => Branch,
+    type: () => [Branch],
   })
   @ValidateNested()
   @Type(() => Branch)
   @IsOptional()
-  branch?: Branch | null;
+  branches?: Array<Branch>;
 
   @ApiProperty({
     required: true,
