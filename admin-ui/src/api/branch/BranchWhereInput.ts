@@ -1,11 +1,11 @@
 import { StringNullableFilter } from "../../util/StringNullableFilter";
-import { IntNullableFilter } from "../../util/IntNullableFilter";
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 
 export type BranchWhereInput = {
   address?: StringNullableFilter;
   branchCode?: StringNullableFilter;
-  branchmanagerid?: IntNullableFilter;
+  branchmanagerid?: UserWhereUniqueInput;
   branchName?: StringNullableFilter;
   id?: StringFilter;
 };

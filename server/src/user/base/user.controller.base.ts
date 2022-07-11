@@ -46,8 +46,22 @@ export class UserControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        branches: data.branches
+          ? {
+              connect: data.branches,
+            }
+          : undefined,
+      },
       select: {
+        branches: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         email: true,
         firstName: true,
@@ -75,6 +89,12 @@ export class UserControllerBase {
     return this.service.findMany({
       ...args,
       select: {
+        branches: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         email: true,
         firstName: true,
@@ -103,6 +123,12 @@ export class UserControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
+        branches: {
+          select: {
+            id: true,
+          },
+        },
+
         createdAt: true,
         email: true,
         firstName: true,
@@ -138,8 +164,22 @@ export class UserControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          branches: data.branches
+            ? {
+                connect: data.branches,
+              }
+            : undefined,
+        },
         select: {
+          branches: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           email: true,
           firstName: true,
@@ -176,6 +216,12 @@ export class UserControllerBase {
       return await this.service.delete({
         where: params,
         select: {
+          branches: {
+            select: {
+              id: true,
+            },
+          },
+
           createdAt: true,
           email: true,
           firstName: true,

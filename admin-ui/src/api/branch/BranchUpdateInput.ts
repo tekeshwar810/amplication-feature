@@ -1,6 +1,8 @@
+import { UserWhereUniqueInput } from "../user/UserWhereUniqueInput";
+
 export type BranchUpdateInput = {
   address?: string | null;
   branchCode?: string | null;
-  branchmanagerid?: number | null;
+  branchmanagerid?: UserWhereUniqueInput | null;
   branchName?: string | null;
 };
