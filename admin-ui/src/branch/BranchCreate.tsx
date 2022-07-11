@@ -4,10 +4,8 @@ import {
   SimpleForm,
   CreateProps,
   TextInput,
-  ReferenceInput,
-  SelectInput,
+  NumberInput,
 } from "react-admin";
-import { UserTitle } from "../user/UserTitle";
 
 export const BranchCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -15,13 +13,11 @@ export const BranchCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="address" multiline source="address" />
         <TextInput label="branchCode" source="branchCode" />
-        <ReferenceInput
-          source="user.id"
-          reference="User"
+        <NumberInput
+          step={1}
           label="branchmanagerid"
-        >
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
+          source="branchmanagerid"
+        />
         <TextInput label="branchName" source="branchName" />
       </SimpleForm>
     </Create>
