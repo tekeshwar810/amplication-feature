@@ -40,17 +40,6 @@ class BranchUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  branchName?: string | null;
-
-  @ApiProperty({
-    required: false,
     type: () => UserWhereUniqueInput,
   })
   @ValidateNested()
@@ -59,6 +48,17 @@ class BranchUpdateInput {
   @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  managerid?: UserWhereUniqueInput | null;
+  branchmanagerid?: UserWhereUniqueInput | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  branchName?: string | null;
 }
 export { BranchUpdateInput };

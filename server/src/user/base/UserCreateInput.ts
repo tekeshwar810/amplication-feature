@@ -11,23 +11,22 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { BranchCreateNestedManyWithoutUsersInput } from "./BranchCreateNestedManyWithoutUsersInput";
+import { BranchWhereUniqueInput } from "../../branch/base/BranchWhereUniqueInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { ProductCreateNestedManyWithoutUsersInput } from "./ProductCreateNestedManyWithoutUsersInput";
 @InputType()
 class UserCreateInput {
   @ApiProperty({
     required: false,
-    type: () => BranchCreateNestedManyWithoutUsersInput,
+    type: () => BranchWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => BranchCreateNestedManyWithoutUsersInput)
+  @Type(() => BranchWhereUniqueInput)
   @IsOptional()
-  @Field(() => BranchCreateNestedManyWithoutUsersInput, {
+  @Field(() => BranchWhereUniqueInput, {
     nullable: true,
   })
-  branches?: BranchCreateNestedManyWithoutUsersInput;
+  branches?: BranchWhereUniqueInput;
 
   @ApiProperty({
     required: true,
@@ -66,18 +65,6 @@ class UserCreateInput {
   @IsString()
   @Field(() => String)
   password!: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProductCreateNestedManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => ProductCreateNestedManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => ProductCreateNestedManyWithoutUsersInput, {
-    nullable: true,
-  })
-  products?: ProductCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
     required: true,

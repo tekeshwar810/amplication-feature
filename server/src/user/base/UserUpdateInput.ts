@@ -11,23 +11,22 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { BranchUpdateManyWithoutUsersInput } from "./BranchUpdateManyWithoutUsersInput";
+import { BranchWhereUniqueInput } from "../../branch/base/BranchWhereUniqueInput";
 import { ValidateNested, IsOptional, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { ProductUpdateManyWithoutUsersInput } from "./ProductUpdateManyWithoutUsersInput";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
     required: false,
-    type: () => BranchUpdateManyWithoutUsersInput,
+    type: () => BranchWhereUniqueInput,
   })
   @ValidateNested()
-  @Type(() => BranchUpdateManyWithoutUsersInput)
+  @Type(() => BranchWhereUniqueInput)
   @IsOptional()
-  @Field(() => BranchUpdateManyWithoutUsersInput, {
+  @Field(() => BranchWhereUniqueInput, {
     nullable: true,
   })
-  branches?: BranchUpdateManyWithoutUsersInput;
+  branches?: BranchWhereUniqueInput;
 
   @ApiProperty({
     required: false,
@@ -72,18 +71,6 @@ class UserUpdateInput {
     nullable: true,
   })
   password?: string;
-
-  @ApiProperty({
-    required: false,
-    type: () => ProductUpdateManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => ProductUpdateManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => ProductUpdateManyWithoutUsersInput, {
-    nullable: true,
-  })
-  products?: ProductUpdateManyWithoutUsersInput;
 
   @ApiProperty({
     required: false,

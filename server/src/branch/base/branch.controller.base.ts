@@ -49,25 +49,25 @@ export class BranchControllerBase {
       data: {
         ...data,
 
-        managerid: data.managerid
+        branchmanagerid: data.branchmanagerid
           ? {
-              connect: data.managerid,
+              connect: data.branchmanagerid,
             }
           : undefined,
       },
       select: {
         address: true,
         branchCode: true,
-        branchName: true,
-        createdAt: true,
-        id: true,
 
-        managerid: {
+        branchmanagerid: {
           select: {
             id: true,
           },
         },
 
+        branchName: true,
+        createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -90,16 +90,16 @@ export class BranchControllerBase {
       select: {
         address: true,
         branchCode: true,
-        branchName: true,
-        createdAt: true,
-        id: true,
 
-        managerid: {
+        branchmanagerid: {
           select: {
             id: true,
           },
         },
 
+        branchName: true,
+        createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -123,16 +123,16 @@ export class BranchControllerBase {
       select: {
         address: true,
         branchCode: true,
-        branchName: true,
-        createdAt: true,
-        id: true,
 
-        managerid: {
+        branchmanagerid: {
           select: {
             id: true,
           },
         },
 
+        branchName: true,
+        createdAt: true,
+        id: true,
         updatedAt: true,
       },
     });
@@ -164,25 +164,25 @@ export class BranchControllerBase {
         data: {
           ...data,
 
-          managerid: data.managerid
+          branchmanagerid: data.branchmanagerid
             ? {
-                connect: data.managerid,
+                connect: data.branchmanagerid,
               }
             : undefined,
         },
         select: {
           address: true,
           branchCode: true,
-          branchName: true,
-          createdAt: true,
-          id: true,
 
-          managerid: {
+          branchmanagerid: {
             select: {
               id: true,
             },
           },
 
+          branchName: true,
+          createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });
@@ -214,16 +214,16 @@ export class BranchControllerBase {
         select: {
           address: true,
           branchCode: true,
-          branchName: true,
-          createdAt: true,
-          id: true,
 
-          managerid: {
+          branchmanagerid: {
             select: {
               id: true,
             },
           },
 
+          branchName: true,
+          createdAt: true,
+          id: true,
           updatedAt: true,
         },
       });

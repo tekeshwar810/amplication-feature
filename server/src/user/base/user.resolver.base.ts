@@ -25,10 +25,7 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { BranchFindManyArgs } from "../../branch/base/BranchFindManyArgs";
 import { Branch } from "../../branch/base/Branch";
-import { ProductFindManyArgs } from "../../product/base/ProductFindManyArgs";
-import { Product } from "../../product/base/Product";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -94,7 +91,15 @@ export class UserResolverBase {
   async createUser(@graphql.Args() args: CreateUserArgs): Promise<User> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        branches: args.data.branches
+          ? {
+              connect: args.data.branches,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -109,7 +114,15 @@ export class UserResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          branches: args.data.branches
+            ? {
+                connect: args.data.branches,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -141,42 +154,18 @@ export class UserResolverBase {
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Branch])
+  @graphql.ResolveField(() => Branch, { nullable: true })
   @nestAccessControl.UseRoles({
     resource: "Branch",
     action: "read",
     possession: "any",
   })
-  async branches(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: BranchFindManyArgs
-  ): Promise<Branch[]> {
-    const results = await this.service.findBranches(parent.id, args);
+  async branches(@graphql.Parent() parent: User): Promise<Branch | null> {
+    const result = await this.service.getBranches(parent.id);
 
-    if (!results) {
-      return [];
+    if (!result) {
+      return null;
     }
-
-    return results;
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Product])
-  @nestAccessControl.UseRoles({
-    resource: "Product",
-    action: "read",
-    possession: "any",
-  })
-  async products(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: ProductFindManyArgs
-  ): Promise<Product[]> {
-    const results = await this.service.findProducts(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
+    return result;
   }
 }

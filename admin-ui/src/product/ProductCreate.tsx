@@ -1,13 +1,5 @@
 import * as React from "react";
-import {
-  Create,
-  SimpleForm,
-  CreateProps,
-  TextInput,
-  ReferenceInput,
-  SelectInput,
-} from "react-admin";
-import { UserTitle } from "../user/UserTitle";
+import { Create, SimpleForm, CreateProps, TextInput } from "react-admin";
 
 export const ProductCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -15,9 +7,6 @@ export const ProductCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="Description" multiline source="description" />
         <TextInput label="name" source="name" />
-        <ReferenceInput source="user.id" reference="User" label="userid">
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
       </SimpleForm>
     </Create>
   );

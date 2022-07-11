@@ -14,17 +14,16 @@ import { ApiProperty } from "@nestjs/swagger";
 import { Branch } from "../../branch/base/Branch";
 import { ValidateNested, IsOptional, IsDate, IsString } from "class-validator";
 import { Type } from "class-transformer";
-import { Product } from "../../product/base/Product";
 @ObjectType()
 class User {
   @ApiProperty({
     required: false,
-    type: () => [Branch],
+    type: () => Branch,
   })
   @ValidateNested()
   @Type(() => Branch)
   @IsOptional()
-  branches?: Array<Branch>;
+  branches?: Branch;
 
   @ApiProperty({
     required: true,
@@ -71,15 +70,6 @@ class User {
     nullable: true,
   })
   lastName!: string | null;
-
-  @ApiProperty({
-    required: false,
-    type: () => [Product],
-  })
-  @ValidateNested()
-  @Type(() => Product)
-  @IsOptional()
-  products?: Array<Product>;
 
   @ApiProperty({
     required: true,
