@@ -2,7 +2,7 @@ import { Branch } from "../branch/Branch";
 import { Product } from "../product/Product";
 
 export type User = {
-  branch?: Branch | null;
+  branches?: Array<Branch>;
   createdAt: Date;
   email: string;
   firstName: string | null;

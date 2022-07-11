@@ -6,5 +6,5 @@ export type ProductOrderByInput = {
   id?: SortOrder;
   name?: SortOrder;
   updatedAt?: SortOrder;
-  userIdId?: SortOrder;
+  useridId?: SortOrder;
 };

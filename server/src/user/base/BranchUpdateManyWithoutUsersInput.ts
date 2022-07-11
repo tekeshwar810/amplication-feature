@@ -10,44 +10,35 @@ https://docs.amplication.com/docs/how-to/custom-code
 ------------------------------------------------------------------------------
   */
 import { InputType, Field } from "@nestjs/graphql";
+import { BranchWhereUniqueInput } from "../../branch/base/BranchWhereUniqueInput";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
-import { Type } from "class-transformer";
 @InputType()
-class ProductUpdateInput {
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+class BranchUpdateManyWithoutUsersInput {
+  @Field(() => [BranchWhereUniqueInput], {
     nullable: true,
   })
-  description?: string | null;
+  @ApiProperty({
+    required: false,
+    type: () => [BranchWhereUniqueInput],
+  })
+  connect?: Array<BranchWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
+  @Field(() => [BranchWhereUniqueInput], {
     nullable: true,
   })
-  name?: string;
+  @ApiProperty({
+    required: false,
+    type: () => [BranchWhereUniqueInput],
+  })
+  disconnect?: Array<BranchWhereUniqueInput>;
 
-  @ApiProperty({
-    required: false,
-    type: () => UserWhereUniqueInput,
-  })
-  @ValidateNested()
-  @Type(() => UserWhereUniqueInput)
-  @IsOptional()
-  @Field(() => UserWhereUniqueInput, {
+  @Field(() => [BranchWhereUniqueInput], {
     nullable: true,
   })
-  userid?: UserWhereUniqueInput;
+  @ApiProperty({
+    required: false,
+    type: () => [BranchWhereUniqueInput],
+  })
+  set?: Array<BranchWhereUniqueInput>;
 }
-export { ProductUpdateInput };
+export { BranchUpdateManyWithoutUsersInput };

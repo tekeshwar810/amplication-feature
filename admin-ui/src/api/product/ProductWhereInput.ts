@@ -6,5 +6,5 @@ export type ProductWhereInput = {
   description?: StringNullableFilter;
   id?: StringFilter;
   name?: StringFilter;
-  userId?: UserWhereUniqueInput;
+  userid?: UserWhereUniqueInput;
 };

@@ -70,7 +70,7 @@ class ProductOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  userIdId?: SortOrder;
+  useridId?: SortOrder;
 }
 
 export { ProductOrderByInput };

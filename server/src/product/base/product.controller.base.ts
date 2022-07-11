@@ -49,8 +49,8 @@ export class ProductControllerBase {
       data: {
         ...data,
 
-        userId: {
-          connect: data.userId,
+        userid: {
+          connect: data.userid,
         },
       },
       select: {
@@ -60,7 +60,7 @@ export class ProductControllerBase {
         name: true,
         updatedAt: true,
 
-        userId: {
+        userid: {
           select: {
             id: true,
           },
@@ -90,7 +90,7 @@ export class ProductControllerBase {
         name: true,
         updatedAt: true,
 
-        userId: {
+        userid: {
           select: {
             id: true,
           },
@@ -121,7 +121,7 @@ export class ProductControllerBase {
         name: true,
         updatedAt: true,
 
-        userId: {
+        userid: {
           select: {
             id: true,
           },
@@ -156,8 +156,8 @@ export class ProductControllerBase {
         data: {
           ...data,
 
-          userId: {
-            connect: data.userId,
+          userid: {
+            connect: data.userid,
           },
         },
         select: {
@@ -167,7 +167,7 @@ export class ProductControllerBase {
           name: true,
           updatedAt: true,
 
-          userId: {
+          userid: {
             select: {
               id: true,
             },
@@ -206,7 +206,7 @@ export class ProductControllerBase {
           name: true,
           updatedAt: true,
 
-          userId: {
+          userid: {
             select: {
               id: true,
             },

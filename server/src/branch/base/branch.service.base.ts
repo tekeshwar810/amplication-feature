@@ -47,14 +47,11 @@ export class BranchServiceBase {
     return this.prisma.branch.delete(args);
   }
 
-  async findUserId(
-    parentId: string,
-    args: Prisma.UserFindManyArgs
-  ): Promise<User[]> {
+  async getManagerid(parentId: string): Promise<User | null> {
     return this.prisma.branch
       .findUnique({
         where: { id: parentId },
       })
-      .userId(args);
+      .managerid();
   }
 }

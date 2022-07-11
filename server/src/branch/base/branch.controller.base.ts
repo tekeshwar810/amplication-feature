@@ -27,9 +27,6 @@ import { BranchWhereUniqueInput } from "./BranchWhereUniqueInput";
 import { BranchFindManyArgs } from "./BranchFindManyArgs";
 import { BranchUpdateInput } from "./BranchUpdateInput";
 import { Branch } from "./Branch";
-import { UserFindManyArgs } from "../../user/base/UserFindManyArgs";
-import { User } from "../../user/base/User";
-import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class BranchControllerBase {
@@ -49,13 +46,28 @@ export class BranchControllerBase {
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: BranchCreateInput): Promise<Branch> {
     return await this.service.create({
-      data: data,
+      data: {
+        ...data,
+
+        managerid: data.managerid
+          ? {
+              connect: data.managerid,
+            }
+          : undefined,
+      },
       select: {
         address: true,
         branchCode: true,
         branchName: true,
         createdAt: true,
         id: true,
+
+        managerid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -81,6 +93,13 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+
+        managerid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -107,6 +126,13 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+
+        managerid: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -135,13 +161,28 @@ export class BranchControllerBase {
     try {
       return await this.service.update({
         where: params,
-        data: data,
+        data: {
+          ...data,
+
+          managerid: data.managerid
+            ? {
+                connect: data.managerid,
+              }
+            : undefined,
+        },
         select: {
           address: true,
           branchCode: true,
           branchName: true,
           createdAt: true,
           id: true,
+
+          managerid: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -176,6 +217,13 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+
+          managerid: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -187,111 +235,5 @@ export class BranchControllerBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
-  @common.Get("/:id/userId")
-  @ApiNestedQuery(UserFindManyArgs)
-  async findManyUserId(
-    @common.Req() request: Request,
-    @common.Param() params: BranchWhereUniqueInput
-  ): Promise<User[]> {
-    const query = plainToClass(UserFindManyArgs, request.query);
-    const results = await this.service.findUserId(params.id, {
-      ...query,
-      select: {
-        branch: {
-          select: {
-            id: true,
-          },
-        },
-
-        createdAt: true,
-        email: true,
-        firstName: true,
-        id: true,
-        lastName: true,
-        roles: true,
-        updatedAt: true,
-        username: true,
-      },
-    });
-    if (results === null) {
-      throw new errors.NotFoundException(
-        `No resource was found for ${JSON.stringify(params)}`
-      );
-    }
-    return results;
-  }
-
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "update",
-    possession: "any",
-  })
-  @common.Post("/:id/userId")
-  async connectUserId(
-    @common.Param() params: BranchWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      userId: {
-        connect: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "update",
-    possession: "any",
-  })
-  @common.Patch("/:id/userId")
-  async updateUserId(
-    @common.Param() params: BranchWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      userId: {
-        set: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
-  }
-
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "update",
-    possession: "any",
-  })
-  @common.Delete("/:id/userId")
-  async disconnectUserId(
-    @common.Param() params: BranchWhereUniqueInput,
-    @common.Body() body: UserWhereUniqueInput[]
-  ): Promise<void> {
-    const data = {
-      userId: {
-        disconnect: body,
-      },
-    };
-    await this.service.update({
-      where: params,
-      data,
-      select: { id: true },
-    });
   }
 }
