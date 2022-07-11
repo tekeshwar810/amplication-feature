@@ -25,8 +25,6 @@ import { DeleteUserArgs } from "./DeleteUserArgs";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserFindUniqueArgs } from "./UserFindUniqueArgs";
 import { User } from "./User";
-import { BranchFindManyArgs } from "../../branch/base/BranchFindManyArgs";
-import { Branch } from "../../branch/base/Branch";
 import { UserService } from "../user.service";
 
 @graphql.Resolver(() => User)
@@ -136,25 +134,5 @@ export class UserResolverBase {
       }
       throw error;
     }
-  }
-
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @graphql.ResolveField(() => [Branch])
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
-  async branches(
-    @graphql.Parent() parent: User,
-    @graphql.Args() args: BranchFindManyArgs
-  ): Promise<Branch[]> {
-    const results = await this.service.findBranches(parent.id, args);
-
-    if (!results) {
-      return [];
-    }
-
-    return results;
   }
 }

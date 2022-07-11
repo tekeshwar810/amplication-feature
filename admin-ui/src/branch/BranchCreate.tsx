@@ -1,13 +1,5 @@
 import * as React from "react";
-import {
-  Create,
-  SimpleForm,
-  CreateProps,
-  TextInput,
-  ReferenceInput,
-  SelectInput,
-} from "react-admin";
-import { UserTitle } from "../user/UserTitle";
+import { Create, SimpleForm, CreateProps, TextInput } from "react-admin";
 
 export const BranchCreate = (props: CreateProps): React.ReactElement => {
   return (
@@ -15,13 +7,6 @@ export const BranchCreate = (props: CreateProps): React.ReactElement => {
       <SimpleForm>
         <TextInput label="address" multiline source="address" />
         <TextInput label="branchCode" source="branchCode" />
-        <ReferenceInput
-          source="user.id"
-          reference="User"
-          label="branchmanagerid"
-        >
-          <SelectInput optionText={UserTitle} />
-        </ReferenceInput>
         <TextInput label="branchName" source="branchName" />
       </SimpleForm>
     </Create>
