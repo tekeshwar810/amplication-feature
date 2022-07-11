@@ -13,6 +13,7 @@ const existingId = "existingId";
 const CREATE_INPUT = {
   address: "exampleAddress",
   branchCode: "exampleBranchCode",
+  branchmanagerid: 42,
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",
@@ -21,6 +22,7 @@ const CREATE_INPUT = {
 const CREATE_RESULT = {
   address: "exampleAddress",
   branchCode: "exampleBranchCode",
+  branchmanagerid: 42,
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",
@@ -30,6 +32,7 @@ const FIND_MANY_RESULT = [
   {
     address: "exampleAddress",
     branchCode: "exampleBranchCode",
+    branchmanagerid: 42,
     branchName: "exampleBranchName",
     createdAt: new Date(),
     id: "exampleId",
@@ -39,6 +42,7 @@ const FIND_MANY_RESULT = [
 const FIND_ONE_RESULT = {
   address: "exampleAddress",
   branchCode: "exampleBranchCode",
+  branchmanagerid: 42,
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",

@@ -43,7 +43,7 @@ class BranchOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
-  branchmanageridId?: SortOrder;
+  branchmanagerid?: SortOrder;
 
   @ApiProperty({
     required: false,
