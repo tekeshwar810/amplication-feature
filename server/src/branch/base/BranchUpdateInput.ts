@@ -11,7 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, IsInt } from "class-validator";
+import { IsString, IsOptional, ValidateNested } from "class-validator";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
+import { Type } from "class-transformer";
 @InputType()
 class BranchUpdateInput {
   @ApiProperty({
@@ -38,14 +40,15 @@ class BranchUpdateInput {
 
   @ApiProperty({
     required: false,
-    type: Number,
+    type: () => UserWhereUniqueInput,
   })
-  @IsInt()
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
   @IsOptional()
-  @Field(() => Number, {
+  @Field(() => UserWhereUniqueInput, {
     nullable: true,
   })
-  branchmanagerid?: number | null;
+  branchmanagerid?: UserWhereUniqueInput | null;
 
   @ApiProperty({
     required: false,
