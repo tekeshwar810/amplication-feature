@@ -27,6 +27,9 @@ import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
 import { UserFindManyArgs } from "./UserFindManyArgs";
 import { UserUpdateInput } from "./UserUpdateInput";
 import { User } from "./User";
+import { BranchFindManyArgs } from "../../branch/base/BranchFindManyArgs";
+import { Branch } from "../../branch/base/Branch";
+import { BranchWhereUniqueInput } from "../../branch/base/BranchWhereUniqueInput";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class UserControllerBase {
@@ -48,7 +51,6 @@ export class UserControllerBase {
     return await this.service.create({
       data: data,
       select: {
-        branches: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -76,7 +78,6 @@ export class UserControllerBase {
     return this.service.findMany({
       ...args,
       select: {
-        branches: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -105,7 +106,6 @@ export class UserControllerBase {
     const result = await this.service.findOne({
       where: params,
       select: {
-        branches: true,
         createdAt: true,
         email: true,
         firstName: true,
@@ -143,7 +143,6 @@ export class UserControllerBase {
         where: params,
         data: data,
         select: {
-          branches: true,
           createdAt: true,
           email: true,
           firstName: true,
@@ -180,7 +179,6 @@ export class UserControllerBase {
       return await this.service.delete({
         where: params,
         select: {
-          branches: true,
           createdAt: true,
           email: true,
           firstName: true,
@@ -199,5 +197,110 @@ export class UserControllerBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "Branch",
+    action: "read",
+    possession: "any",
+  })
+  @common.Get("/:id/branches")
+  @ApiNestedQuery(BranchFindManyArgs)
+  async findManyBranches(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Branch[]> {
+    const query = plainToClass(BranchFindManyArgs, request.query);
+    const results = await this.service.findBranches(params.id, {
+      ...query,
+      select: {
+        address: true,
+        branchCode: true,
+
+        branchmanagerid: {
+          select: {
+            id: true,
+          },
+        },
+
+        branchName: true,
+        createdAt: true,
+        id: true,
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Post("/:id/branches")
+  async connectBranches(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      branches: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Patch("/:id/branches")
+  async updateBranches(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      branches: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Delete("/:id/branches")
+  async disconnectBranches(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      branches: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
   }
 }

@@ -13,7 +13,8 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional } from "class-validator";
+import { IsOptional, ValidateNested } from "class-validator";
+import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
 @InputType()
 class BranchWhereInput {
@@ -38,6 +39,18 @@ class BranchWhereInput {
     nullable: true,
   })
   branchCode?: StringNullableFilter;
+
+  @ApiProperty({
+    required: false,
+    type: () => UserWhereUniqueInput,
+  })
+  @ValidateNested()
+  @Type(() => UserWhereUniqueInput)
+  @IsOptional()
+  @Field(() => UserWhereUniqueInput, {
+    nullable: true,
+  })
+  branchmanagerid?: UserWhereUniqueInput;
 
   @ApiProperty({
     required: false,

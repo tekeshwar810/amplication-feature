@@ -1,5 +1,7 @@
+import { BranchCreateNestedManyWithoutUsersInput } from "./BranchCreateNestedManyWithoutUsersInput";
+
 export type UserCreateInput = {
-  branches?: string | null;
+  branches?: BranchCreateNestedManyWithoutUsersInput;
   email: string;
   firstName?: string | null;
   lastName?: string | null;

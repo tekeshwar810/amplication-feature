@@ -25,6 +25,7 @@ import { DeleteBranchArgs } from "./DeleteBranchArgs";
 import { BranchFindManyArgs } from "./BranchFindManyArgs";
 import { BranchFindUniqueArgs } from "./BranchFindUniqueArgs";
 import { Branch } from "./Branch";
+import { User } from "../../user/base/User";
 import { BranchService } from "../branch.service";
 
 @graphql.Resolver(() => Branch)
@@ -92,7 +93,15 @@ export class BranchResolverBase {
   async createBranch(@graphql.Args() args: CreateBranchArgs): Promise<Branch> {
     return await this.service.create({
       ...args,
-      data: args.data,
+      data: {
+        ...args.data,
+
+        branchmanagerid: args.data.branchmanagerid
+          ? {
+              connect: args.data.branchmanagerid,
+            }
+          : undefined,
+      },
     });
   }
 
@@ -109,7 +118,15 @@ export class BranchResolverBase {
     try {
       return await this.service.update({
         ...args,
-        data: args.data,
+        data: {
+          ...args.data,
+
+          branchmanagerid: args.data.branchmanagerid
+            ? {
+                connect: args.data.branchmanagerid,
+              }
+            : undefined,
+        },
       });
     } catch (error) {
       if (isRecordNotFoundError(error)) {
@@ -140,5 +157,23 @@ export class BranchResolverBase {
       }
       throw error;
     }
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async branchmanagerid(
+    @graphql.Parent() parent: Branch
+  ): Promise<User | null> {
+    const result = await this.service.getBranchmanagerid(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
   }
 }
