@@ -1,4 +1,5 @@
 export type User = {
+  branches: string | null;
   createdAt: Date;
   email: string;
   firstName: string | null;
