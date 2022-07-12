@@ -15,6 +15,17 @@ import { IsString, IsOptional } from "class-validator";
 @InputType()
 class UserCreateInput {
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  branches?: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })

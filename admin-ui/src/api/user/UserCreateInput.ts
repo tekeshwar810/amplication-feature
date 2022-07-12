@@ -1,4 +1,5 @@
 export type UserCreateInput = {
+  branches?: string | null;
   email: string;
   firstName?: string | null;
   lastName?: string | null;
