@@ -1,5 +1,7 @@
+import { Branch } from "../branch/Branch";
+
 export type User = {
-  branches: string | null;
+  branches?: Array<Branch>;
   createdAt: Date;
   email: string;
   firstName: string | null;
