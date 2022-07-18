@@ -23,6 +23,7 @@ export const BranchCreate = (props: CreateProps): React.ReactElement => {
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="branchName" source="branchName" />
+        <TextInput label="status" source="status" />
       </SimpleForm>
     </Create>
   );

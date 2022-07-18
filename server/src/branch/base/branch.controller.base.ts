@@ -68,6 +68,7 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
@@ -94,13 +95,13 @@ export class BranchControllerBase {
         branchmanagerid: {
           select: {
             id: true,
-            username:true
           },
         },
 
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
@@ -134,6 +135,7 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
@@ -184,6 +186,7 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          status: true,
           updatedAt: true,
         },
       });
@@ -225,6 +228,7 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          status: true,
           updatedAt: true,
         },
       });

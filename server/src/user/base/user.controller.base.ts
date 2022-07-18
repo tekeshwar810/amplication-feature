@@ -48,7 +48,6 @@ export class UserControllerBase {
   @swagger.ApiCreatedResponse({ type: User })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
-    console.log(data,'dd')
     return await this.service.create({
       data: data,
       select: {
@@ -228,6 +227,7 @@ export class UserControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
