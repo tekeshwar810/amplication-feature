@@ -95,6 +95,7 @@ export class BranchControllerBase {
         branchmanagerid: {
           select: {
             id: true,
+            username:true
           },
         },
 

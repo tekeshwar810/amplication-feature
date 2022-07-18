@@ -1,6 +1,8 @@
+-- CreateEnum
+CREATE TYPE "EnumBranchStatus" AS ENUM ('Option1');
+
 -- CreateTable
 CREATE TABLE "User" (
-    "branchId" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "email" TEXT NOT NULL,
     "firstName" TEXT,
@@ -18,9 +20,11 @@ CREATE TABLE "User" (
 CREATE TABLE "Branch" (
     "address" TEXT,
     "branchCode" TEXT,
+    "branchmanageridId" TEXT,
     "branchName" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "id" TEXT NOT NULL,
+    "status" "EnumBranchStatus",
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
     CONSTRAINT "Branch_pkey" PRIMARY KEY ("id")
@@ -33,7 +37,6 @@ CREATE TABLE "Product" (
     "id" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "updatedAt" TIMESTAMP(3) NOT NULL,
-    "userIdId" TEXT NOT NULL,
 
     CONSTRAINT "Product_pkey" PRIMARY KEY ("id")
 );
@@ -70,7 +73,4 @@ CREATE UNIQUE INDEX "User_username_key" ON "User"("username");
 CREATE UNIQUE INDEX "Fi_name_key" ON "Fi"("name");
 
 -- AddForeignKey
-ALTER TABLE "User" ADD CONSTRAINT "User_branchId_fkey" FOREIGN KEY ("branchId") REFERENCES "Branch"("id") ON DELETE SET NULL ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "Product" ADD CONSTRAINT "Product_userIdId_fkey" FOREIGN KEY ("userIdId") REFERENCES "User"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Branch" ADD CONSTRAINT "Branch_branchmanageridId_fkey" FOREIGN KEY ("branchmanageridId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

@@ -9,6 +9,7 @@ type Branch {
   branchmanagerid: User
   createdAt: DateTime!
   id: String!
+  status: EnumBranchStatus
   updatedAt: DateTime!
 }
 
@@ -17,6 +18,7 @@ input BranchCreateInput {
   branchCode: String
   branchName: String
   branchmanagerid: UserWhereUniqueInput
+  status: EnumBranchStatus
 }
 
 input BranchCreateNestedManyWithoutUsersInput {
@@ -36,6 +38,7 @@ input BranchOrderByInput {
   branchmanageridId: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  status: SortOrder
   updatedAt: SortOrder
 }
 
@@ -44,6 +47,7 @@ input BranchUpdateInput {
   branchCode: String
   branchName: String
   branchmanagerid: UserWhereUniqueInput
+  status: EnumBranchStatus
 }
 
 input BranchUpdateManyWithoutUsersInput {
@@ -58,6 +62,7 @@ input BranchWhereInput {
   branchName: StringNullableFilter
   branchmanagerid: UserWhereUniqueInput
   id: StringFilter
+  status: EnumBranchStatus
 }
 
 input BranchWhereUniqueInput {
@@ -65,14 +70,18 @@ input BranchWhereUniqueInput {
 }
 
 input Credentials {
-  email: String!
   password: String!
+  username: String!
 }
 
 """
 A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
 """
 scalar DateTime
+
+enum EnumBranchStatus {
+  Option_1
+}
 
 type Fi {
   address: String!
@@ -299,8 +308,6 @@ input UserCreateInput {
 
 type UserInfo {
   accessToken: String
-  email: String!
-  id: String!
   roles: [String!]!
   username: String!
 }

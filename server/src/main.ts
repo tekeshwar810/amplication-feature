@@ -1,6 +1,7 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
+import { Request,Response,NextFunction } from 'express';
 // @ts-ignore
 // eslint-disable-next-line
 import { AppModule } from "./app.module";
@@ -17,12 +18,20 @@ const { PORT = 3000 } = process.env;
 async function main() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
+  function globalMiddleware(req:Request,res:Response,next:NextFunction){
+    console.log('run')
+    next()
+  }
+  
+
   app.setGlobalPrefix("api");
+  app.use(globalMiddleware)
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
-    })
+    }),
   );
+
 
   const document = SwaggerModule.createDocument(app, swaggerDocumentOptions);
 
