@@ -12,8 +12,8 @@ export class BasicStrategyBase
     super();
   }
 
-  async validate(email: string, password: string): Promise<UserInfo> {
-    const user = await this.authService.validateUser(email, password);
+  async validate(username: string, password: string): Promise<UserInfo> {
+    const user = await this.authService.validateUser(username, password);
     if (!user) {
       throw new UnauthorizedException();
     }

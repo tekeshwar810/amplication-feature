@@ -13,9 +13,10 @@ import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
 import { StringNullableFilter } from "../../util/StringNullableFilter";
 import { Type } from "class-transformer";
-import { IsOptional, ValidateNested } from "class-validator";
+import { IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { StringFilter } from "../../util/StringFilter";
+import { EnumBranchStatus } from "./EnumBranchStatus";
 @InputType()
 class BranchWhereInput {
   @ApiProperty({
@@ -73,5 +74,16 @@ class BranchWhereInput {
     nullable: true,
   })
   id?: StringFilter;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumBranchStatus,
+  })
+  @IsEnum(EnumBranchStatus)
+  @IsOptional()
+  @Field(() => EnumBranchStatus, {
+    nullable: true,
+  })
+  status?: "Option1";
 }
 export { BranchWhereInput };

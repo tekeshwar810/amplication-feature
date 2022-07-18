@@ -23,12 +23,13 @@ model User {
 model Branch {
   address           String?
   branchCode        String?
-  branchmanagerid   User?    @relation(fields: [branchmanageridId], references: [id])
+  branchmanagerid   User?             @relation(fields: [branchmanageridId], references: [id])
   branchmanageridId String?
   branchName        String?
-  createdAt         DateTime @default(now())
-  id                String   @id @default(cuid())
-  updatedAt         DateTime @updatedAt
+  createdAt         DateTime          @default(now())
+  id                String            @id @default(cuid())
+  status            EnumBranchStatus?
+  updatedAt         DateTime          @updatedAt
 }
 
 model Product {
@@ -53,4 +54,8 @@ model Fi {
   id        String   @id @default(cuid())
   name      String?  @unique
   updatedAt DateTime @updatedAt
+}
+
+enum EnumBranchStatus {
+  Option1
 }

@@ -114,9 +114,6 @@ export class UserControllerBase {
         roles: true,
         updatedAt: true,
         username: true,
-        branches: {
-          select:{ id:true,branchName:true }
-       }
       },
     });
     if (result === null) {
@@ -230,6 +227,7 @@ export class UserControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });

@@ -16,29 +16,29 @@ export class AuthService {
   ) {}
 
   async validateUser(
-    email: string,
+    username: string,
     password: string
   ): Promise<UserInfo | null> {
     const user = await this.userService.findOne({
-      where: { email },
+      where: { username },
     });
     if (user && (await this.passwordService.compare(password, user.password))) {
-      const { id,roles,email,username } = user;
-      return { id,username,email, roles };
+      const { roles } = user;
+      return { username, roles };
     }
     return null;
   }
   async login(credentials: Credentials): Promise<UserInfo> {
-    const { email, password } = credentials;
+    const { username, password } = credentials;
     const user = await this.validateUser(
-      credentials.email,
+      credentials.username,
       credentials.password
     );
     if (!user) {
       throw new UnauthorizedException("The passed credentials are incorrect");
     }
     //@ts-ignore
-    const accessToken = await this.tokenService.createToken(email, password);
+    const accessToken = await this.tokenService.createToken(username, password);
     return {
       accessToken,
       ...user,
