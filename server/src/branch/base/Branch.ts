@@ -11,16 +11,9 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { ObjectType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import {
-  IsString,
-  IsOptional,
-  ValidateNested,
-  IsDate,
-  IsEnum,
-} from "class-validator";
+import { IsString, IsOptional, ValidateNested, IsDate } from "class-validator";
 import { User } from "../../user/base/User";
 import { Type } from "class-transformer";
-import { EnumBranchStatus } from "./EnumBranchStatus";
 @ObjectType()
 class Branch {
   @ApiProperty({
@@ -80,17 +73,6 @@ class Branch {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: false,
-    enum: EnumBranchStatus,
-  })
-  @IsEnum(EnumBranchStatus)
-  @IsOptional()
-  @Field(() => EnumBranchStatus, {
-    nullable: true,
-  })
-  status?: "Option1" | null;
 
   @ApiProperty({
     required: true,
