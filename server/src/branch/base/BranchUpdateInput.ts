@@ -60,5 +60,16 @@ class BranchUpdateInput {
     nullable: true,
   })
   branchName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status?: string | null;
 }
 export { BranchUpdateInput };

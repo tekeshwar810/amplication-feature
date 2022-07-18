@@ -5,4 +5,5 @@ export type BranchUpdateInput = {
   branchCode?: string | null;
   branchmanagerid?: UserWhereUniqueInput | null;
   branchName?: string | null;
+  status?: string | null;
 };

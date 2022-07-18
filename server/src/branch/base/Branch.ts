@@ -75,6 +75,17 @@ class Branch {
   id!: string;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  status!: string | null;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()

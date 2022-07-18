@@ -16,6 +16,7 @@ const CREATE_INPUT = {
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",
+  status: "exampleStatus",
   updatedAt: new Date(),
 };
 const CREATE_RESULT = {
@@ -24,6 +25,7 @@ const CREATE_RESULT = {
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",
+  status: "exampleStatus",
   updatedAt: new Date(),
 };
 const FIND_MANY_RESULT = [
@@ -33,6 +35,7 @@ const FIND_MANY_RESULT = [
     branchName: "exampleBranchName",
     createdAt: new Date(),
     id: "exampleId",
+    status: "exampleStatus",
     updatedAt: new Date(),
   },
 ];
@@ -42,6 +45,7 @@ const FIND_ONE_RESULT = {
   branchName: "exampleBranchName",
   createdAt: new Date(),
   id: "exampleId",
+  status: "exampleStatus",
   updatedAt: new Date(),
 };
 
