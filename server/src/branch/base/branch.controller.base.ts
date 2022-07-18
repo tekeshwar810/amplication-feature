@@ -27,8 +27,6 @@ import { BranchWhereUniqueInput } from "./BranchWhereUniqueInput";
 import { BranchFindManyArgs } from "./BranchFindManyArgs";
 import { BranchUpdateInput } from "./BranchUpdateInput";
 import { Branch } from "./Branch";
-import { ValidationPipe } from "@nestjs/common";
-
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class BranchControllerBase {
@@ -46,7 +44,7 @@ export class BranchControllerBase {
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Branch })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
-  async create(@common.Body(new ValidationPipe()) data: BranchCreateInput): Promise<Branch> {
+  async create(@common.Body() data: BranchCreateInput): Promise<Branch> {
     return await this.service.create({
       data: {
         ...data,
@@ -70,6 +68,7 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
@@ -87,9 +86,7 @@ export class BranchControllerBase {
   @ApiNestedQuery(BranchFindManyArgs)
   async findMany(@common.Req() request: Request): Promise<Branch[]> {
     const args = plainToClass(BranchFindManyArgs, request.query);
-    let total:any = {}
- 
-    const result= await this.service.findMany({
+    return this.service.findMany({
       ...args,
       select: {
         address: true,
@@ -98,20 +95,16 @@ export class BranchControllerBase {
         branchmanagerid: {
           select: {
             id: true,
-            firstName:true,
           },
         },
 
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
-    total.count = result.length
-    result.push(total)
-    return result;
-
   }
 
   @common.UseInterceptors(AclFilterResponseInterceptor)
@@ -136,13 +129,13 @@ export class BranchControllerBase {
         branchmanagerid: {
           select: {
             id: true,
-            firstName:true
           },
         },
 
         branchName: true,
         createdAt: true,
         id: true,
+        status: true,
         updatedAt: true,
       },
     });
@@ -193,6 +186,7 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          status: true,
           updatedAt: true,
         },
       });
@@ -234,6 +228,7 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          status: true,
           updatedAt: true,
         },
       });

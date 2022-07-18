@@ -11,9 +11,10 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
+import { IsString, IsOptional, ValidateNested, IsEnum } from "class-validator";
 import { UserWhereUniqueInput } from "../../user/base/UserWhereUniqueInput";
 import { Type } from "class-transformer";
+import { EnumBranchStatus } from "./EnumBranchStatus";
 @InputType()
 class BranchUpdateInput {
   @ApiProperty({
@@ -60,5 +61,16 @@ class BranchUpdateInput {
     nullable: true,
   })
   branchName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    enum: EnumBranchStatus,
+  })
+  @IsEnum(EnumBranchStatus)
+  @IsOptional()
+  @Field(() => EnumBranchStatus, {
+    nullable: true,
+  })
+  status?: "Option1" | null;
 }
 export { BranchUpdateInput };

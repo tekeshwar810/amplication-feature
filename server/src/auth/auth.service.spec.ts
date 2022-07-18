@@ -13,11 +13,11 @@ import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 
 const VALID_CREDENTIALS: Credentials = {
-  email: "Valid User",
+  username: "Valid User",
   password: "Valid User Password",
 };
 const INVALID_CREDENTIALS: Credentials = {
-  email: "Invalid User",
+  username: "Invalid User",
   password: "Invalid User Password",
 };
 const USER: any = {
@@ -33,8 +33,8 @@ const USER: any = {
 const SIGN_TOKEN = "SIGN_TOKEN";
 
 const userService = {
-  findOne(args: { where: { email: string } }): any | null {
-    if (args.where.email === VALID_CREDENTIALS.email) {
+  findOne(args: { where: { username: string } }): any | null {
+    if (args.where.username === VALID_CREDENTIALS.username) {
       return USER;
     }
     return null;
@@ -48,7 +48,7 @@ const passwordService = {
 };
 
 const tokenService = {
-  createToken(email: string, password: string) {
+  createToken(username: string, password: string) {
     return SIGN_TOKEN;
   },
 };
@@ -86,11 +86,11 @@ describe("AuthService", () => {
     it("should validate a valid user", async () => {
       await expect(
         service.validateUser(
-          VALID_CREDENTIALS.email,
+          VALID_CREDENTIALS.username,
           VALID_CREDENTIALS.password
         )
       ).resolves.toEqual({
-        email: USER.email,
+        username: USER.username,
         roles: USER.roles,
       });
     });
@@ -98,7 +98,7 @@ describe("AuthService", () => {
     it("should not validate a invalid user", async () => {
       await expect(
         service.validateUser(
-          INVALID_CREDENTIALS.email,
+          INVALID_CREDENTIALS.username,
           INVALID_CREDENTIALS.password
         )
       ).resolves.toBe(null);
@@ -109,7 +109,7 @@ describe("AuthService", () => {
     it("should return userInfo object for correct username and password", async () => {
       const loginResult = await service.login(VALID_CREDENTIALS);
       expect(loginResult).toEqual({
-        email: USER.email,
+        username: USER.username,
         roles: USER.roles,
         accessToken: SIGN_TOKEN,
       });
