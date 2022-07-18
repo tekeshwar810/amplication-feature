@@ -228,7 +228,6 @@ export class UserControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
-        status: true,
         updatedAt: true,
       },
     });

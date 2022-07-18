@@ -7,6 +7,5 @@ export type BranchOrderByInput = {
   branchName?: SortOrder;
   createdAt?: SortOrder;
   id?: SortOrder;
-  status?: SortOrder;
   updatedAt?: SortOrder;
 };
