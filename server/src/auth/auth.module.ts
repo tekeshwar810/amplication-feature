@@ -31,7 +31,7 @@ import { TokenService } from "./token.service";
         configService: ConfigService
       ) => {
         const secret = await secretsService.getSecret<string>(JWT_SECRET_KEY);
-        const expiresIn = configService.get(JWT_EXPIRATION);
+        const expiresIn = "1hr"
         if (!secret) {
           throw new Error("Didn't get a valid jwt secret");
         }

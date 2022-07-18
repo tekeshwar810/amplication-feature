@@ -1,0 +1,341 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Branch {
+  address: String
+  branchCode: String
+  branchName: String
+  branchmanagerid: User
+  createdAt: DateTime!
+  id: String!
+  updatedAt: DateTime!
+}
+
+input BranchCreateInput {
+  address: String
+  branchCode: String
+  branchName: String
+  branchmanagerid: UserWhereUniqueInput
+}
+
+input BranchCreateNestedManyWithoutUsersInput {
+  connect: [BranchWhereUniqueInput!]
+}
+
+input BranchListRelationFilter {
+  every: BranchWhereInput
+  none: BranchWhereInput
+  some: BranchWhereInput
+}
+
+input BranchOrderByInput {
+  address: SortOrder
+  branchCode: SortOrder
+  branchName: SortOrder
+  branchmanageridId: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  updatedAt: SortOrder
+}
+
+input BranchUpdateInput {
+  address: String
+  branchCode: String
+  branchName: String
+  branchmanagerid: UserWhereUniqueInput
+}
+
+input BranchUpdateManyWithoutUsersInput {
+  connect: [BranchWhereUniqueInput!]
+  disconnect: [BranchWhereUniqueInput!]
+  set: [BranchWhereUniqueInput!]
+}
+
+input BranchWhereInput {
+  address: StringNullableFilter
+  branchCode: StringNullableFilter
+  branchName: StringNullableFilter
+  branchmanagerid: UserWhereUniqueInput
+  id: StringFilter
+}
+
+input BranchWhereUniqueInput {
+  id: String!
+}
+
+input Credentials {
+  email: String!
+  password: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Fi {
+  address: String!
+  createdAt: DateTime!
+  id: String!
+  name: String
+  updatedAt: DateTime!
+}
+
+input FiCreateInput {
+  address: String!
+  name: String
+}
+
+input FiOrderByInput {
+  address: SortOrder
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input FiUpdateInput {
+  address: String
+  name: String
+}
+
+input FiWhereInput {
+  address: StringFilter
+  id: StringFilter
+  name: StringNullableFilter
+}
+
+input FiWhereUniqueInput {
+  id: String!
+}
+
+input IntNullableFilter {
+  equals: Int
+  gt: Int
+  gte: Int
+  in: [Int!]
+  lt: Int
+  lte: Int
+  not: Int
+  notIn: [Int!]
+}
+
+type MetaQueryPayload {
+  count: Float!
+}
+
+type Mutation {
+  createBranch(data: BranchCreateInput!): Branch!
+  createFi(data: FiCreateInput!): Fi!
+  createProduct(data: ProductCreateInput!): Product!
+  createRole(data: RoleCreateInput!): Role!
+  createUser(data: UserCreateInput!): User!
+  deleteBranch(where: BranchWhereUniqueInput!): Branch!
+  deleteFi(where: FiWhereUniqueInput!): Fi!
+  deleteProduct(where: ProductWhereUniqueInput!): Product!
+  deleteRole(where: RoleWhereUniqueInput!): Role!
+  deleteUser(where: UserWhereUniqueInput!): User!
+  login(credentials: Credentials!): UserInfo!
+  updateBranch(data: BranchUpdateInput!, where: BranchWhereUniqueInput!): Branch!
+  updateFi(data: FiUpdateInput!, where: FiWhereUniqueInput!): Fi!
+  updateProduct(data: ProductUpdateInput!, where: ProductWhereUniqueInput!): Product!
+  updateRole(data: RoleUpdateInput!, where: RoleWhereUniqueInput!): Role!
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User!
+}
+
+type Product {
+  createdAt: DateTime!
+  description: String
+  id: String!
+  name: String!
+  updatedAt: DateTime!
+}
+
+input ProductCreateInput {
+  description: String
+  name: String!
+}
+
+input ProductOrderByInput {
+  createdAt: SortOrder
+  description: SortOrder
+  id: SortOrder
+  name: SortOrder
+  updatedAt: SortOrder
+}
+
+input ProductUpdateInput {
+  description: String
+  name: String
+}
+
+input ProductWhereInput {
+  description: StringNullableFilter
+  id: StringFilter
+  name: StringFilter
+}
+
+input ProductWhereUniqueInput {
+  id: String!
+}
+
+type Query {
+  _branchesMeta(orderBy: [BranchOrderByInput!], skip: Float, take: Float, where: BranchWhereInput): MetaQueryPayload!
+  _fisMeta(orderBy: [FiOrderByInput!], skip: Float, take: Float, where: FiWhereInput): MetaQueryPayload!
+  _productsMeta(orderBy: [ProductOrderByInput!], skip: Float, take: Float, where: ProductWhereInput): MetaQueryPayload!
+  _rolesMeta(orderBy: [RoleOrderByInput!], skip: Float, take: Float, where: RoleWhereInput): MetaQueryPayload!
+  _usersMeta(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): MetaQueryPayload!
+  branch(where: BranchWhereUniqueInput!): Branch
+  branches(orderBy: [BranchOrderByInput!], skip: Float, take: Float, where: BranchWhereInput): [Branch!]!
+  fi(where: FiWhereUniqueInput!): Fi
+  fis(orderBy: [FiOrderByInput!], skip: Float, take: Float, where: FiWhereInput): [Fi!]!
+  product(where: ProductWhereUniqueInput!): Product
+  products(orderBy: [ProductOrderByInput!], skip: Float, take: Float, where: ProductWhereInput): [Product!]!
+  role(where: RoleWhereUniqueInput!): Role
+  roles(orderBy: [RoleOrderByInput!], skip: Float, take: Float, where: RoleWhereInput): [Role!]!
+  user(where: UserWhereUniqueInput!): User
+  userInfo: UserInfo!
+  users(orderBy: [UserOrderByInput!], skip: Float, take: Float, where: UserWhereInput): [User!]!
+}
+
+enum QueryMode {
+  Default
+  Insensitive
+}
+
+type Role {
+  createdAt: DateTime!
+  id: String!
+  name: String
+  roleId: Float
+  updatedAt: DateTime!
+}
+
+input RoleCreateInput {
+  name: String
+  roleId: Float
+}
+
+input RoleOrderByInput {
+  createdAt: SortOrder
+  id: SortOrder
+  name: SortOrder
+  roleId: SortOrder
+  updatedAt: SortOrder
+}
+
+input RoleUpdateInput {
+  name: String
+  roleId: Float
+}
+
+input RoleWhereInput {
+  id: StringFilter
+  name: StringNullableFilter
+  roleId: IntNullableFilter
+}
+
+input RoleWhereUniqueInput {
+  id: String!
+}
+
+enum SortOrder {
+  Asc
+  Desc
+}
+
+input StringFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+input StringNullableFilter {
+  contains: String
+  endsWith: String
+  equals: String
+  gt: String
+  gte: String
+  in: [String!]
+  lt: String
+  lte: String
+  mode: QueryMode
+  not: String
+  notIn: [String!]
+  startsWith: String
+}
+
+type User {
+  branches(orderBy: [BranchOrderByInput!], skip: Float, take: Float, where: BranchWhereInput): [Branch!]!
+  createdAt: DateTime!
+  email: String!
+  firstName: String
+  id: String!
+  lastName: String
+  roles: [String!]!
+  updatedAt: DateTime!
+  username: String!
+}
+
+input UserCreateInput {
+  branches: BranchCreateNestedManyWithoutUsersInput
+  email: String!
+  firstName: String
+  lastName: String
+  password: String!
+  roles: [String!]!
+  username: String!
+}
+
+type UserInfo {
+  accessToken: String
+  email: String!
+  id: String!
+  roles: [String!]!
+  username: String!
+}
+
+input UserOrderByInput {
+  createdAt: SortOrder
+  email: SortOrder
+  firstName: SortOrder
+  id: SortOrder
+  lastName: SortOrder
+  password: SortOrder
+  roles: SortOrder
+  updatedAt: SortOrder
+  username: SortOrder
+}
+
+input UserUpdateInput {
+  branches: BranchUpdateManyWithoutUsersInput
+  email: String
+  firstName: String
+  lastName: String
+  password: String
+  roles: [String!]
+  username: String
+}
+
+input UserWhereInput {
+  branches: BranchListRelationFilter
+  email: StringFilter
+  firstName: StringNullableFilter
+  id: StringFilter
+  lastName: StringNullableFilter
+  username: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: String!
+}

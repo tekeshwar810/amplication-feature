@@ -11,13 +11,13 @@ export class TokenServiceBase implements ITokenService {
   constructor(protected readonly jwtService: JwtService) {}
   /**
    *
-   * @param username
+   * @param email
    * @param password
    * @returns a jwt token sign with the username
    */
-  createToken(username: string, password: string): Promise<string> {
-    if (!username) return Promise.reject(INVALID_USERNAME_ERROR);
+  createToken(email: string, password: string): Promise<string> {
+    if (!email) return Promise.reject(INVALID_USERNAME_ERROR);
     if (!password) return Promise.reject(INVALID_PASSWORD_ERROR);
-    return this.jwtService.signAsync({ username });
+    return this.jwtService.signAsync({ email });
   }
 }

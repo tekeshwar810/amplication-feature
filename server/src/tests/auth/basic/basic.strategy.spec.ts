@@ -14,13 +14,13 @@ describe("Testing the basicStrategyBase.validate()", () => {
   beforeAll(() => {
     //ARRANGE
     authService.validateUser
-      .calledWith(TEST_USER.username, TEST_PASSWORD)
+      .calledWith(TEST_USER.email, TEST_PASSWORD)
       .mockReturnValue(Promise.resolve(TEST_USER));
   });
   it("should return the user", async () => {
     //ACT
     const result = await basicStrategy.validate(
-      TEST_USER.username,
+      TEST_USER.email,
       TEST_PASSWORD
     );
     //ASSERT
