@@ -7,6 +7,8 @@ export type Branch = {
   branchName: string | null;
   createdAt: Date;
   id: string;
+  location: string | null;
   status: string | null;
+  test?: User | null;
   updatedAt: Date;
 };

@@ -54,6 +54,12 @@ export class BranchControllerBase {
               connect: data.branchmanagerid,
             }
           : undefined,
+
+        test: data.test
+          ? {
+              connect: data.test,
+            }
+          : undefined,
       },
       select: {
         address: true,
@@ -68,7 +74,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -101,7 +115,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -135,7 +157,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -172,6 +202,12 @@ export class BranchControllerBase {
                 connect: data.branchmanagerid,
               }
             : undefined,
+
+          test: data.test
+            ? {
+                connect: data.test,
+              }
+            : undefined,
         },
         select: {
           address: true,
@@ -186,7 +222,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
           status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -228,7 +272,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
           status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });

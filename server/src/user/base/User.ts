@@ -82,6 +82,15 @@ class User {
   roles!: Array<string>;
 
   @ApiProperty({
+    required: false,
+    type: () => [Branch],
+  })
+  @ValidateNested()
+  @Type(() => Branch)
+  @IsOptional()
+  test?: Array<Branch>;
+
+  @ApiProperty({
     required: true,
   })
   @IsDate()
