@@ -87,6 +87,18 @@ class UserUpdateInput {
 
   @ApiProperty({
     required: false,
+    type: () => BranchUpdateManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => BranchUpdateManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => BranchUpdateManyWithoutUsersInput, {
+    nullable: true,
+  })
+  test?: BranchUpdateManyWithoutUsersInput;
+
+  @ApiProperty({
+    required: false,
     type: String,
   })
   @IsString()

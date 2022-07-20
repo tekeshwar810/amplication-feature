@@ -25,7 +25,11 @@ export const BranchShow = (props: ShowProps): React.ReactElement => {
         <TextField label="branchName" source="branchName" />
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="location" source="location" />
         <TextField label="status" source="status" />
+        <ReferenceField label="test" source="user.id" reference="User">
+          <TextField source={USER_TITLE_FIELD} />
+        </ReferenceField>
         <DateField source="updatedAt" label="Updated At" />
       </SimpleShowLayout>
     </Show>

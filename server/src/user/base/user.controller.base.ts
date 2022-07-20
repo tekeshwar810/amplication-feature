@@ -227,7 +227,15 @@ export class UserControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -295,6 +303,120 @@ export class UserControllerBase {
   ): Promise<void> {
     const data = {
       branches: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @nestAccessControl.UseRoles({
+    resource: "Branch",
+    action: "read",
+    possession: "any",
+  })
+  @common.Get("/:id/test")
+  @ApiNestedQuery(BranchFindManyArgs)
+  async findManyTest(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Branch[]> {
+    const query = plainToClass(BranchFindManyArgs, request.query);
+    const results = await this.service.findTest(params.id, {
+      ...query,
+      select: {
+        address: true,
+        branchCode: true,
+
+        branchmanagerid: {
+          select: {
+            id: true,
+          },
+        },
+
+        branchName: true,
+        createdAt: true,
+        id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Post("/:id/test")
+  async connectTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Patch("/:id/test")
+  async updateTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "update",
+    possession: "any",
+  })
+  @common.Delete("/:id/test")
+  async disconnectTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
         disconnect: body,
       },
     };

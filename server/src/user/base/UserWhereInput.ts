@@ -76,6 +76,18 @@ class UserWhereInput {
 
   @ApiProperty({
     required: false,
+    type: () => BranchListRelationFilter,
+  })
+  @ValidateNested()
+  @Type(() => BranchListRelationFilter)
+  @IsOptional()
+  @Field(() => BranchListRelationFilter, {
+    nullable: true,
+  })
+  test?: BranchListRelationFilter;
+
+  @ApiProperty({
+    required: false,
     type: StringFilter,
   })
   @Type(() => StringFilter)

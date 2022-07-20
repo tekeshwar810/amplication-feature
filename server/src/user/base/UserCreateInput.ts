@@ -77,6 +77,18 @@ class UserCreateInput {
   roles!: Array<string>;
 
   @ApiProperty({
+    required: false,
+    type: () => BranchCreateNestedManyWithoutUsersInput,
+  })
+  @ValidateNested()
+  @Type(() => BranchCreateNestedManyWithoutUsersInput)
+  @IsOptional()
+  @Field(() => BranchCreateNestedManyWithoutUsersInput, {
+    nullable: true,
+  })
+  test?: BranchCreateNestedManyWithoutUsersInput;
+
+  @ApiProperty({
     required: true,
     type: String,
   })

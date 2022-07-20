@@ -101,6 +101,12 @@ export class BranchResolverBase {
               connect: args.data.branchmanagerid,
             }
           : undefined,
+
+        test: args.data.test
+          ? {
+              connect: args.data.test,
+            }
+          : undefined,
       },
     });
   }
@@ -124,6 +130,12 @@ export class BranchResolverBase {
           branchmanagerid: args.data.branchmanagerid
             ? {
                 connect: args.data.branchmanagerid,
+              }
+            : undefined,
+
+          test: args.data.test
+            ? {
+                connect: args.data.test,
               }
             : undefined,
         },
@@ -170,6 +182,22 @@ export class BranchResolverBase {
     @graphql.Parent() parent: Branch
   ): Promise<User | null> {
     const result = await this.service.getBranchmanagerid(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async test(@graphql.Parent() parent: Branch): Promise<User | null> {
+    const result = await this.service.getTest(parent.id);
 
     if (!result) {
       return null;
