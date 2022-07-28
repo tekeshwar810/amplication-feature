@@ -122,12 +122,6 @@
   {
     "role": "fiadmin",
     "resource": "Branch",
-    "action": "read:own",
-    "attributes": "*"
-  },
-  {
-    "role": "fiadmin",
-    "resource": "Branch",
     "action": "create:any",
     "attributes": "*"
   },

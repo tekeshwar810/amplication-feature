@@ -21,6 +21,7 @@ import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { BranchService } from "../branch.service";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { BranchCreateInput } from "./BranchCreateInput";
 import { BranchWhereInput } from "./BranchWhereInput";
 import { BranchWhereUniqueInput } from "./BranchWhereUniqueInput";
@@ -54,6 +55,12 @@ export class BranchControllerBase {
               connect: data.branchmanagerid,
             }
           : undefined,
+
+        test: data.test
+          ? {
+              connect: data.test,
+            }
+          : undefined,
       },
       select: {
         address: true,
@@ -68,7 +75,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -101,18 +116,21 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "own",
-  })
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: Branch })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -135,7 +153,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
         status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -172,6 +198,12 @@ export class BranchControllerBase {
                 connect: data.branchmanagerid,
               }
             : undefined,
+
+          test: data.test
+            ? {
+                connect: data.test,
+              }
+            : undefined,
         },
         select: {
           address: true,
@@ -186,7 +218,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
           status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -228,7 +268,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
           status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });

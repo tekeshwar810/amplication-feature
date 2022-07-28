@@ -7,5 +7,6 @@ export type UserCreateInput = {
   lastName?: string | null;
   password: string;
   roles: Array<string>;
+  test?: BranchCreateNestedManyWithoutUsersInput;
   username: string;
 };

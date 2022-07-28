@@ -157,4 +157,24 @@ export class UserResolverBase {
 
     return results;
   }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => [Branch])
+  @nestAccessControl.UseRoles({
+    resource: "Branch",
+    action: "read",
+    possession: "any",
+  })
+  async test(
+    @graphql.Parent() parent: User,
+    @graphql.Args() args: BranchFindManyArgs
+  ): Promise<Branch[]> {
+    const results = await this.service.findTest(parent.id, args);
+
+    if (!results) {
+      return [];
+    }
+
+    return results;
+  }
 }

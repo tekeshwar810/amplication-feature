@@ -18,6 +18,7 @@ import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
 import { CreateBranchArgs } from "./CreateBranchArgs";
 import { UpdateBranchArgs } from "./UpdateBranchArgs";
@@ -66,13 +67,8 @@ export class BranchResolverBase {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => Branch, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "own",
-  })
   async branch(
     @graphql.Args() args: BranchFindUniqueArgs
   ): Promise<Branch | null> {
@@ -101,6 +97,12 @@ export class BranchResolverBase {
               connect: args.data.branchmanagerid,
             }
           : undefined,
+
+        test: args.data.test
+          ? {
+              connect: args.data.test,
+            }
+          : undefined,
       },
     });
   }
@@ -124,6 +126,12 @@ export class BranchResolverBase {
           branchmanagerid: args.data.branchmanagerid
             ? {
                 connect: args.data.branchmanagerid,
+              }
+            : undefined,
+
+          test: args.data.test
+            ? {
+                connect: args.data.test,
               }
             : undefined,
         },
@@ -170,6 +178,22 @@ export class BranchResolverBase {
     @graphql.Parent() parent: Branch
   ): Promise<User | null> {
     const result = await this.service.getBranchmanagerid(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @graphql.ResolveField(() => User, { nullable: true })
+  @nestAccessControl.UseRoles({
+    resource: "User",
+    action: "read",
+    possession: "any",
+  })
+  async test(@graphql.Parent() parent: Branch): Promise<User | null> {
+    const result = await this.service.getTest(parent.id);
 
     if (!result) {
       return null;
