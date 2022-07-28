@@ -3,7 +3,8 @@ import * as swagger from "@nestjs/swagger";
 import * as nestAccessControl from "nest-access-control";
 import { UserService } from "./user.service";
 import { UserControllerBase } from "./base/user.controller.base";
-import {Request} from 'express'
+import { Request } from 'express'
+import { Get } from "@nestjs/common";
 
 import * as nestMorgan from "nest-morgan";
 // import * as basicAuthGuard from "../auth/basicAuth.guard";
@@ -13,8 +14,10 @@ import { UserWhereUniqueInput } from "./base/UserWhereUniqueInput";
 import { AclValidateRequestInterceptor } from "src/interceptors/aclValidateRequest.interceptor";
 import { UserCreateInput } from "./base/UserCreateInput";
 import { UserRoleWhereInput } from "./base/UserRoleWhereInput";
-import { Response, UseGuards } from "@nestjs/common";
+import { Req, Response, UseGuards } from "@nestjs/common";
 import { AuthGuard } from "@nestjs/passport";
+import d from "src/util/logger";
+import { Logger } from "winston";
 
 @swagger.ApiTags("users")
 @common.Controller("users")
@@ -28,26 +31,26 @@ export class UserController extends UserControllerBase {
   }
 
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
-  @common.Get("/getUserByName/:roles")
+  @Get("/getUserByName/:roles")
   // @UseGuards(AuthGuard('jwt'))
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "own",
-  })
+  // @nestAccessControl.UseRoles({
+  //   resource: "User",
+  //   action: "update",
+  //   possession: "own",
+  // })
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
    async getUserByName(
     // @common.Body() body: UserCreateInput,
     @common.Param() params : UserRoleWhereInput,
-    
+    @Req() req : Request
   ): Promise<User | null>{
     let roles = params.roles
     let userAry:Array<string> = roles
     
-    const result =  this.service.getUserByName(userAry);
+    d.logger.info(`get user by name api run`)
+    const result =  await this.service.getUserByName(userAry);
     if (result === null) {
       throw new errors.NotFoundException(
         `No resource was found for ${JSON.stringify(params.roles)}`
@@ -56,3 +59,4 @@ export class UserController extends UserControllerBase {
     return result;
   }
 }
+

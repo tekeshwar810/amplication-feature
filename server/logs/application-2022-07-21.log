@@ -1,0 +1,11 @@
+2022-07-21 17:50:50 [undefined] info: get user by name api run
+2022-07-21 17:50:50 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 24.038 ms
+
+2022-07-21 18:53:31 [undefined] info: get user by name api run
+2022-07-21 18:53:31 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 23.425 ms
+
+2022-07-21 18:53:46 [undefined] info: get user by name api run
+2022-07-21 18:53:46 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 13.228 ms
+
+2022-07-21 18:54:01 [undefined] info: GET /swagger/favicon.png 304 - - 2.875 ms
+

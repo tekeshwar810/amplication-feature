@@ -11,24 +11,15 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmpty, IsString } from "class-validator";
+import { IsString } from "class-validator";
 @InputType()
-class BranchWhereUniqueInput {
+class FileUploadInput {
   @ApiProperty({
     required: true,
-    type: String,
+    type: File,
   })
   @IsString()
-  @Field(() => String)
+  @Field(() => File)
   id!: string;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  branchManagerId!: string;
-
 }
-export { BranchWhereUniqueInput };
+export { FileUploadInput };

@@ -11,17 +11,18 @@ import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
 import { SecretsManagerModule } from "./providers/secrets/secretsManager.module";
 import { ConfigModule, ConfigService } from "@nestjs/config";
-import { ServeStaticModule } from "@nestjs/serve-static";
+import { ServeStaticModule } from "@nestjs/serve-static/dist/serve-static.module";
 import { ServeStaticOptionsService } from "./serveStaticOptions.service";
 import { GraphQLModule } from "@nestjs/graphql";
-
+import { MulterModule } from "@nestjs/platform-express";
+import path from 'path'
 @Module({
   controllers: [],
   imports: [
     UserModule,
     BranchModule,
     ProductModule,
-    RoleModule,
+    RoleModule,  
     FiModule,
     ACLModule,
     AuthModule,
@@ -31,6 +32,10 @@ import { GraphQLModule } from "@nestjs/graphql";
     ConfigModule.forRoot({ isGlobal: true }),
     ServeStaticModule.forRootAsync({
       useClass: ServeStaticOptionsService,
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: path.join(__dirname, '..', 'uploads'),
+      serveRoot: '/uploads/' 
     }),
     GraphQLModule.forRootAsync({
       useFactory: (configService) => {
@@ -46,7 +51,8 @@ import { GraphQLModule } from "@nestjs/graphql";
       inject: [ConfigService],
       imports: [ConfigModule],
     }),
-  ],
+   
+    ],
   providers: [
     {
       provide: APP_INTERCEPTOR,

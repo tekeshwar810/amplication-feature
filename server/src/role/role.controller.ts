@@ -14,4 +14,5 @@ export class RoleController extends RoleControllerBase {
   ) {
     super(service, rolesBuilder);
   }
+  
 }

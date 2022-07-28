@@ -8,18 +8,29 @@ export class BranchService extends BranchServiceBase {
     super(prisma);
   }
 
-  async getBranchByCode(branchCode:string) {
-    const userData:any = await this.prisma.branch.findMany({
+  async getBranchByCode(params:any,query:any) {
+    const condition:any = {}
+    console.log(typeof query.assign)
+    if(query.assign == 'true'){
+      condition.branchmanageridId = params.branchManagerId
+    }else{
+      condition.branchmanageridId = null
+    }
+    
+    const branchData:any = await this.prisma.branch.update({
       where: { 
-        branchCode: branchCode        
+        id: params.id
        },
-       select:{
-        createdAt: true,
-        address: true,
-       }
+       data: condition
   });
-  
-  return userData
-
+  if(branchData){
+   if(query.assign == 'true'){
+      return {msg:'assign successfully',success:true}
+  }else{
+    return {msg:'unassign successfully',success:true}
+  }
+  }else{
+    return {msg:'assign successfully not',success:false}
+  }
   }
 }
