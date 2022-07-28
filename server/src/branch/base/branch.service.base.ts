@@ -54,4 +54,12 @@ export class BranchServiceBase {
       })
       .branchmanagerid();
   }
+
+  async getTest(parentId: string): Promise<User | null> {
+    return this.prisma.branch
+      .findUnique({
+        where: { id: parentId },
+      })
+      .test();
+  }
 }
