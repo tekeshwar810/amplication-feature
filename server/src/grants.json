@@ -120,48 +120,6 @@
     "attributes": "*"
   },
   {
-    "role": "fiadmin",
-    "resource": "Branch",
-    "action": "create:any",
-    "attributes": "*"
-  },
-  {
-    "role": "fiadmin",
-    "resource": "Branch",
-    "action": "update:any",
-    "attributes": "*"
-  },
-  {
-    "role": "fiadmin",
-    "resource": "Branch",
-    "action": "delete:any",
-    "attributes": "*"
-  },
-  {
-    "role": "superadmin",
-    "resource": "Branch",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "fiadmin",
-    "resource": "Branch",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "manager",
-    "resource": "Branch",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
-    "role": "loanofficer",
-    "resource": "Branch",
-    "action": "read:any",
-    "attributes": "*"
-  },
-  {
     "role": "superadmin",
     "resource": "Product",
     "action": "read:own",

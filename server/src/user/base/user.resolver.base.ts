@@ -19,6 +19,7 @@ import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
 import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
 import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateUserArgs } from "./CreateUserArgs";
 import { UpdateUserArgs } from "./UpdateUserArgs";
 import { DeleteUserArgs } from "./DeleteUserArgs";
@@ -138,13 +139,8 @@ export class UserResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [Branch])
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
   async branches(
     @graphql.Parent() parent: User,
     @graphql.Args() args: BranchFindManyArgs
@@ -158,13 +154,8 @@ export class UserResolverBase {
     return results;
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => [Branch])
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
   async test(
     @graphql.Parent() parent: User,
     @graphql.Args() args: BranchFindManyArgs
