@@ -27,7 +27,6 @@ import { RoleWhereUniqueInput } from "./RoleWhereUniqueInput";
 import { RoleFindManyArgs } from "./RoleFindManyArgs";
 import { RoleUpdateInput } from "./RoleUpdateInput";
 import { Role } from "./Role";
-import { Public } from "src/decorators/public.decorator";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class RoleControllerBase {
@@ -64,7 +63,6 @@ export class RoleControllerBase {
     action: "read",
     possession: "any",
   })
-
   @common.Get()
   @swagger.ApiOkResponse({ type: [Role] })
   @swagger.ApiForbiddenResponse()

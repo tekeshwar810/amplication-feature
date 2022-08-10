@@ -11,7 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsEmpty, IsString } from "class-validator";
+import { IsString } from "class-validator";
 @InputType()
 class BranchWhereUniqueInput {
   @ApiProperty({
@@ -21,14 +21,5 @@ class BranchWhereUniqueInput {
   @IsString()
   @Field(() => String)
   id!: string;
-
-  @ApiProperty({
-    required: true,
-    type: String,
-  })
-  @IsString()
-  @Field(() => String)
-  branchManagerId!: string;
-
 }
 export { BranchWhereUniqueInput };

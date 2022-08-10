@@ -59,3 +59,10 @@ model Fi {
   name      String?  @unique
   updatedAt DateTime @updatedAt
 }
+
+model Testing {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  testName  String?
+  updatedAt DateTime @updatedAt
+}
