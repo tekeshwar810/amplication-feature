@@ -15,6 +15,7 @@ import { Express,Request } from 'express'
 import path from 'path'
 import { ApiBody, ApiConsumes } from "@nestjs/swagger";
 import { imageFileFilter } from "src/util/FileValidator";
+import { Public } from "src/decorators/public.decorator";
 @swagger.ApiTags("branches")
 @common.Controller("branches")
 export class BranchController extends BranchControllerBase {
@@ -27,6 +28,7 @@ export class BranchController extends BranchControllerBase {
   }
 
   @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @common.Put("/assignBranchManager/:id/:branchManagerId")
   @nestAccessControl.UseRoles({
     resource: "Branch",
@@ -62,12 +64,10 @@ export class BranchController extends BranchControllerBase {
         front: {
           type: 'string',
           format: 'binary',
-          required:true
         },
         back: {
           type: 'string',
           format: 'binary',
-          required:true
         },
       },
     },
@@ -76,7 +76,7 @@ export class BranchController extends BranchControllerBase {
     {name:'front', maxCount: 1},
     {name:'back', maxCount: 1}
   ],
-  {fileFilter:imageFileFilter}
+  {fileFilter:imageFileFilter}  
  ))
   uploadFile(@Req() req:any,@UploadedFiles() files:{front?: Express.Multer.File[],back?: Express.Multer.File[] }) {
     console.log('file',files.front);

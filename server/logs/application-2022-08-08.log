@@ -1,0 +1,86 @@
+2022-08-08 17:27:29 [undefined] info: GET /api 301 173 - 3.369 ms
+
+2022-08-08 17:27:29 [undefined] info: GET /api/ 200 3059 - 2.483 ms
+
+2022-08-08 17:27:29 [undefined] info: GET /api/swagger-ui-standalone-preset.js 200 339612 - 2.732 ms
+
+2022-08-08 17:27:29 [undefined] info: GET /api/swagger-ui-init.js 200 71373 - 0.465 ms
+
+2022-08-08 17:27:29 [undefined] info: GET /swagger/swagger.css 200 6984 - 2.636 ms
+
+2022-08-08 17:27:29 [undefined] info: GET /api/swagger-ui-bundle.js 200 1097238 - 2.628 ms
+
+2022-08-08 17:27:30 [undefined] info: GET /api/swagger-ui.css 200 144210 - 29.653 ms
+
+2022-08-08 17:27:30 [undefined] info: GET /swagger/logo-amplication-white.svg 200 4250 - 1.246 ms
+
+2022-08-08 17:27:30 [undefined] info: GET /swagger/favicon.png 200 2498 - 0.525 ms
+
+2022-08-08 17:27:32 [undefined] info: GET /swagger/favicon.png 304 - - 1.202 ms
+
+2022-08-08 17:27:33 [undefined] info: GET /swagger/favicon.png 304 - - 1.877 ms
+
+2022-08-08 17:27:56 [undefined] info: POST /api/login 201 215 - 563.050 ms
+
+2022-08-08 17:28:04 [undefined] info: GET /swagger/favicon.png 304 - - 0.691 ms
+
+2022-08-08 17:28:05 [undefined] info: GET /swagger/favicon.png 304 - - 0.612 ms
+
+2022-08-08 17:28:06 [undefined] info: GET /swagger/favicon.png 304 - - 0.919 ms
+
+2022-08-08 17:28:20 [undefined] info: get user by name api run
+2022-08-08 17:28:20 [undefined] info: GET /api/users/getUserByName/fiadmin 200 140 - 95.207 ms
+
+2022-08-08 17:29:21 [undefined] info: get user by name api run
+2022-08-08 17:29:21 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 75.073 ms
+
+2022-08-08 17:29:37 [undefined] info: get user by name api run
+2022-08-08 17:29:37 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 101.678 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /api/ 304 - - 5.437 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /api/swagger-ui.css 304 - - 1.413 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 3.191 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 2.077 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /api/swagger-ui-init.js 304 - - 0.659 ms
+
+2022-08-08 17:54:25 [undefined] info: GET /swagger/swagger.css 304 - - 3.532 ms
+
+2022-08-08 17:54:26 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.671 ms
+
+2022-08-08 17:54:26 [undefined] info: GET /swagger/favicon.png 304 - - 0.478 ms
+
+2022-08-08 17:54:28 [undefined] info: GET /swagger/favicon.png 304 - - 0.654 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /api/ 304 - - 1.033 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /api/swagger-ui.css 304 - - 1.995 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /swagger/swagger.css 304 - - 1.921 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /api/swagger-ui-init.js 304 - - 0.479 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 3.037 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 5.950 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.580 ms
+
+2022-08-08 17:54:34 [undefined] info: GET /swagger/favicon.png 304 - - 0.501 ms
+
+2022-08-08 17:57:18 [undefined] info: GET /swagger/favicon.png 304 - - 0.768 ms
+
+2022-08-08 17:57:21 [undefined] info: GET /swagger/favicon.png 304 - - 0.711 ms
+
+2022-08-08 17:57:39 [undefined] info: GET /swagger/favicon.png 304 - - 0.537 ms
+
+2022-08-08 18:10:21 [undefined] info: GET /swagger/favicon.png 304 - - 0.367 ms
+
+2022-08-08 18:10:22 [undefined] info: GET /swagger/favicon.png 304 - - 0.452 ms
+
+2022-08-08 18:10:29 [undefined] info: get user by name api run
+2022-08-08 18:10:29 [undefined] info: GET /api/users/getUserByName/fiadmin 304 - - 68.352 ms
+

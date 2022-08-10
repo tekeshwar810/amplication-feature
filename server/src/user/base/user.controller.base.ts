@@ -19,8 +19,7 @@ import { Request } from "express";
 import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { UserService } from "../user.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { UserCreateInput } from "./UserCreateInput";
 import { UserWhereInput } from "./UserWhereInput";
 import { UserWhereUniqueInput } from "./UserWhereUniqueInput";
@@ -38,17 +37,12 @@ export class UserControllerBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "create",
-    possession: "any",
-  })
+  @Public()
   @common.Post()
   @swagger.ApiCreatedResponse({ type: User })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
-    console.log(data,'dd')
+    console.log('create data')
     return await this.service.create({
       data: data,
       select: {
@@ -64,12 +58,7 @@ export class UserControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
+  @Public()
   @common.Get()
   @swagger.ApiOkResponse({ type: [User] })
   @swagger.ApiForbiddenResponse()
@@ -91,12 +80,7 @@ export class UserControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "own",
-  })
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -125,12 +109,7 @@ export class UserControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "any",
-  })
+  @Public()
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -164,11 +143,7 @@ export class UserControllerBase {
     }
   }
 
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "delete",
-    possession: "any",
-  })
+  @Public()
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: User })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -200,12 +175,7 @@ export class UserControllerBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
+  @Public()
   @common.Get("/:id/branches")
   @ApiNestedQuery(BranchFindManyArgs)
   async findManyBranches(
@@ -228,6 +198,15 @@ export class UserControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -239,11 +218,7 @@ export class UserControllerBase {
     return results;
   }
 
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "any",
-  })
+  @Public()
   @common.Post("/:id/branches")
   async connectBranches(
     @common.Param() params: UserWhereUniqueInput,
@@ -261,11 +236,7 @@ export class UserControllerBase {
     });
   }
 
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "any",
-  })
+  @Public()
   @common.Patch("/:id/branches")
   async updateBranches(
     @common.Param() params: UserWhereUniqueInput,
@@ -283,11 +254,7 @@ export class UserControllerBase {
     });
   }
 
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "update",
-    possession: "any",
-  })
+  @Public()
   @common.Delete("/:id/branches")
   async disconnectBranches(
     @common.Param() params: UserWhereUniqueInput,
@@ -295,6 +262,103 @@ export class UserControllerBase {
   ): Promise<void> {
     const data = {
       branches: {
+        disconnect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Get("/:id/test")
+  @ApiNestedQuery(BranchFindManyArgs)
+  async findManyTest(
+    @common.Req() request: Request,
+    @common.Param() params: UserWhereUniqueInput
+  ): Promise<Branch[]> {
+    const query = plainToClass(BranchFindManyArgs, request.query);
+    const results = await this.service.findTest(params.id, {
+      ...query,
+      select: {
+        address: true,
+        branchCode: true,
+
+        branchmanagerid: {
+          select: {
+            id: true,
+          },
+        },
+
+        branchName: true,
+        createdAt: true,
+        id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
+        updatedAt: true,
+      },
+    });
+    if (results === null) {
+      throw new errors.NotFoundException(
+        `No resource was found for ${JSON.stringify(params)}`
+      );
+    }
+    return results;
+  }
+
+  @Public()
+  @common.Post("/:id/test")
+  async connectTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
+        connect: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Patch("/:id/test")
+  async updateTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
+        set: body,
+      },
+    };
+    await this.service.update({
+      where: params,
+      data,
+      select: { id: true },
+    });
+  }
+
+  @Public()
+  @common.Delete("/:id/test")
+  async disconnectTest(
+    @common.Param() params: UserWhereUniqueInput,
+    @common.Body() body: BranchWhereUniqueInput[]
+  ): Promise<void> {
+    const data = {
+      test: {
         disconnect: body,
       },
     };

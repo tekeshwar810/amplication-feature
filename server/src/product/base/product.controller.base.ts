@@ -27,6 +27,8 @@ import { ProductWhereUniqueInput } from "./ProductWhereUniqueInput";
 import { ProductFindManyArgs } from "./ProductFindManyArgs";
 import { ProductUpdateInput } from "./ProductUpdateInput";
 import { Product } from "./Product";
+import { Public } from "src/decorators/public.decorator";
+import { Role } from "src/role/base/Role";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class ProductControllerBase {
@@ -57,12 +59,12 @@ export class ProductControllerBase {
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Product",
-    action: "read",
-    possession: "any",
-  })
+  // @common.UseInterceptors(AclFilterResponseInterceptor)
+  // @nestAccessControl.UseRoles({
+  //   resource: "Product",
+  //   action: "read",
+  //   possession: "any",
+  // })
   @common.Get()
   @swagger.ApiOkResponse({ type: [Product] })
   @swagger.ApiForbiddenResponse()

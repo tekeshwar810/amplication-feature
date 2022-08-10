@@ -9,6 +9,9 @@ type Branch {
   branchmanagerid: User
   createdAt: DateTime!
   id: String!
+  location: String
+  status: String
+  test: User
   updatedAt: DateTime!
 }
 
@@ -17,6 +20,9 @@ input BranchCreateInput {
   branchCode: String
   branchName: String
   branchmanagerid: UserWhereUniqueInput
+  location: String
+  status: String
+  test: UserWhereUniqueInput
 }
 
 input BranchCreateNestedManyWithoutUsersInput {
@@ -36,6 +42,9 @@ input BranchOrderByInput {
   branchmanageridId: SortOrder
   createdAt: SortOrder
   id: SortOrder
+  location: SortOrder
+  status: SortOrder
+  testId: SortOrder
   updatedAt: SortOrder
 }
 
@@ -44,6 +53,9 @@ input BranchUpdateInput {
   branchCode: String
   branchName: String
   branchmanagerid: UserWhereUniqueInput
+  location: String
+  status: String
+  test: UserWhereUniqueInput
 }
 
 input BranchUpdateManyWithoutUsersInput {
@@ -58,6 +70,9 @@ input BranchWhereInput {
   branchName: StringNullableFilter
   branchmanagerid: UserWhereUniqueInput
   id: StringFilter
+  location: StringNullableFilter
+  status: StringNullableFilter
+  test: UserWhereUniqueInput
 }
 
 input BranchWhereUniqueInput {
@@ -66,8 +81,8 @@ input BranchWhereUniqueInput {
 }
 
 input Credentials {
+  email: String!
   password: String!
-  username: String!
 }
 
 """
@@ -284,6 +299,7 @@ type User {
   id: String!
   lastName: String
   roles: [String!]!
+  test(orderBy: [BranchOrderByInput!], skip: Float, take: Float, where: BranchWhereInput): [Branch!]!
   updatedAt: DateTime!
   username: String!
 }
@@ -295,13 +311,14 @@ input UserCreateInput {
   lastName: String
   password: String!
   roles: [String!]!
+  test: BranchCreateNestedManyWithoutUsersInput
   username: String!
 }
 
 type UserInfo {
   accessToken: String
+  email: String!
   roles: [String!]!
-  username: String!
 }
 
 input UserOrderByInput {
@@ -323,6 +340,7 @@ input UserUpdateInput {
   lastName: String
   password: String
   roles: [String!]
+  test: BranchUpdateManyWithoutUsersInput
   username: String
 }
 
@@ -332,6 +350,7 @@ input UserWhereInput {
   firstName: StringNullableFilter
   id: StringFilter
   lastName: StringNullableFilter
+  test: BranchListRelationFilter
   username: StringFilter
 }
 

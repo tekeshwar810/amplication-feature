@@ -1,0 +1,178 @@
+2022-08-09 12:12:49 [undefined] info: GET /api/ 304 - - 3.618 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /api/swagger-ui.css 304 - - 4.118 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 4.632 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 6.469 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /swagger/swagger.css 304 - - 9.534 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /api/swagger-ui-init.js 304 - - 2.169 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.710 ms
+
+2022-08-09 12:12:49 [undefined] info: GET /swagger/favicon.png 304 - - 0.630 ms
+
+2022-08-09 12:12:55 [undefined] info: GET /swagger/favicon.png 304 - - 0.552 ms
+
+2022-08-09 12:12:55 [undefined] info: GET /swagger/favicon.png 304 - - 0.600 ms
+
+2022-08-09 12:13:04 [undefined] info: POST /api/login 201 215 - 564.990 ms
+
+2022-08-09 12:13:10 [undefined] info: GET /swagger/favicon.png 304 - - 0.454 ms
+
+2022-08-09 12:13:11 [undefined] info: GET /swagger/favicon.png 304 - - 0.817 ms
+
+2022-08-09 12:13:16 [undefined] info: GET /swagger/favicon.png 304 - - 0.410 ms
+
+2022-08-09 12:13:17 [undefined] info: GET /swagger/favicon.png 304 - - 0.618 ms
+
+2022-08-09 12:13:18 [undefined] info: GET /swagger/favicon.png 304 - - 0.786 ms
+
+2022-08-09 12:14:52 [undefined] info: POST /api/users 400 91 - 2.764 ms
+
+2022-08-09 12:27:35 [undefined] info: POST /api/users 400 91 - 10.931 ms
+
+2022-08-09 12:36:35 [undefined] info: POST /api/users 201 208 - 167.860 ms
+
+2022-08-09 12:42:56 [undefined] info: GET /swagger/favicon.png 304 - - 4.842 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /api/ 304 - - 4.541 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /api/swagger-ui.css 304 - - 1.767 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 1.747 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /api/swagger-ui-init.js 200 71277 - 0.402 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /swagger/swagger.css 304 - - 3.815 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 2.934 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.781 ms
+
+2022-08-09 12:50:07 [undefined] info: GET /swagger/favicon.png 304 - - 0.585 ms
+
+2022-08-09 12:50:12 [undefined] info: GET /swagger/favicon.png 304 - - 0.590 ms
+
+2022-08-09 12:50:21 [undefined] info: GET /swagger/favicon.png 304 - - 0.597 ms
+
+2022-08-09 12:50:21 [undefined] info: GET /swagger/favicon.png 304 - - 0.709 ms
+
+2022-08-09 12:50:24 [undefined] info: GET /swagger/favicon.png 304 - - 0.861 ms
+
+2022-08-09 12:50:25 [undefined] info: GET /swagger/favicon.png 304 - - 1.134 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /api/ 304 - - 20.682 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /api/swagger-ui.css 304 - - 3.177 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 3.398 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /api/swagger-ui-init.js 200 71373 - 0.751 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /swagger/swagger.css 304 - - 8.333 ms
+
+2022-08-09 12:50:41 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 4.285 ms
+
+2022-08-09 12:50:42 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 1.142 ms
+
+2022-08-09 12:50:42 [undefined] info: GET /swagger/favicon.png 304 - - 0.596 ms
+
+2022-08-09 12:51:10 [undefined] info: GET /swagger/favicon.png 304 - - 0.857 ms
+
+2022-08-09 12:51:19 [undefined] info: GET /swagger/favicon.png 304 - - 0.571 ms
+
+2022-08-09 12:51:20 [undefined] info: GET /swagger/favicon.png 304 - - 0.513 ms
+
+2022-08-09 12:51:21 [undefined] info: GET /swagger/favicon.png 304 - - 0.506 ms
+
+2022-08-09 12:51:22 [undefined] info: GET /swagger/favicon.png 304 - - 0.986 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /api/ 304 - - 9.030 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /api/swagger-ui.css 304 - - 3.097 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 2.030 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /api/swagger-ui-init.js 200 70767 - 0.629 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 2.798 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /swagger/swagger.css 304 - - 2.727 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.691 ms
+
+2022-08-09 12:52:36 [undefined] info: GET /swagger/favicon.png 304 - - 0.544 ms
+
+2022-08-09 12:52:40 [undefined] info: GET /swagger/favicon.png 304 - - 0.538 ms
+
+2022-08-09 12:52:41 [undefined] info: GET /api/ 304 - - 3.895 ms
+
+2022-08-09 12:52:41 [undefined] info: GET /api/swagger-ui.css 304 - - 4.933 ms
+
+2022-08-09 12:52:41 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 4.382 ms
+
+2022-08-09 12:52:42 [undefined] info: GET /api/swagger-ui-init.js 304 - - 2.126 ms
+
+2022-08-09 12:52:42 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 10.419 ms
+
+2022-08-09 12:52:42 [undefined] info: GET /swagger/swagger.css 304 - - 12.189 ms
+
+2022-08-09 12:52:42 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.349 ms
+
+2022-08-09 12:52:42 [undefined] info: GET /swagger/favicon.png 304 - - 0.475 ms
+
+2022-08-09 12:52:46 [undefined] info: GET /swagger/favicon.png 304 - - 0.742 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /api/ 304 - - 5.767 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /api/swagger-ui.css 304 - - 2.396 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 2.214 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /api/swagger-ui-init.js 200 68991 - 0.905 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 6.027 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /swagger/swagger.css 304 - - 3.377 ms
+
+2022-08-09 12:53:28 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 1.203 ms
+
+2022-08-09 12:53:29 [undefined] info: GET /swagger/favicon.png 304 - - 0.400 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /api/ 304 - - 20.454 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /api/swagger-ui.css 304 - - 4.974 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 4.537 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /api/swagger-ui-init.js 200 69041 - 0.880 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 7.804 ms
+
+2022-08-09 12:54:12 [undefined] info: GET /swagger/swagger.css 304 - - 5.599 ms
+
+2022-08-09 12:54:13 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 1.031 ms
+
+2022-08-09 12:54:13 [undefined] info: GET /swagger/favicon.png 304 - - 0.348 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /api/ 304 - - 19.048 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /api/swagger-ui.css 304 - - 5.814 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /api/swagger-ui-bundle.js 304 - - 5.746 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /api/swagger-ui-standalone-preset.js 304 - - 6.190 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /api/swagger-ui-init.js 200 71373 - 1.150 ms
+
+2022-08-09 12:54:48 [undefined] info: GET /swagger/swagger.css 304 - - 9.864 ms
+
+2022-08-09 12:54:49 [undefined] info: GET /swagger/logo-amplication-white.svg 304 - - 0.722 ms
+
+2022-08-09 12:54:49 [undefined] info: GET /swagger/favicon.png 304 - - 0.931 ms
+
+2022-08-09 14:11:42 [undefined] info: GET /swagger/favicon.png 304 - - 4.315 ms
+

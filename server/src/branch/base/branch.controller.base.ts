@@ -19,8 +19,7 @@ import { Request } from "express";
 import { plainToClass } from "class-transformer";
 import { ApiNestedQuery } from "../../decorators/api-nested-query.decorator";
 import { BranchService } from "../branch.service";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { BranchCreateInput } from "./BranchCreateInput";
 import { BranchWhereInput } from "./BranchWhereInput";
 import { BranchWhereUniqueInput } from "./BranchWhereUniqueInput";
@@ -35,12 +34,7 @@ export class BranchControllerBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "create",
-    possession: "any",
-  })
+  @Public()
   @common.Post()
   @swagger.ApiCreatedResponse({ type: Branch })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
@@ -52,6 +46,12 @@ export class BranchControllerBase {
         branchmanagerid: data.branchmanagerid
           ? {
               connect: data.branchmanagerid,
+            }
+          : undefined,
+
+        test: data.test
+          ? {
+              connect: data.test,
             }
           : undefined,
       },
@@ -68,17 +68,21 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
+  @Public()
   @common.Get()
   @swagger.ApiOkResponse({ type: [Branch] })
   @swagger.ApiForbiddenResponse()
@@ -94,24 +98,27 @@ export class BranchControllerBase {
         branchmanagerid: {
           select: {
             id: true,
-            username:true
           },
         },
 
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "own",
-  })
+  @Public()
   @common.Get("/:id")
   @swagger.ApiOkResponse({ type: Branch })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -134,6 +141,15 @@ export class BranchControllerBase {
         branchName: true,
         createdAt: true,
         id: true,
+        location: true,
+        status: true,
+
+        test: {
+          select: {
+            id: true,
+          },
+        },
+
         updatedAt: true,
       },
     });
@@ -145,12 +161,7 @@ export class BranchControllerBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "update",
-    possession: "any",
-  })
+  @Public()
   @common.Patch("/:id")
   @swagger.ApiOkResponse({ type: Branch })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -170,6 +181,12 @@ export class BranchControllerBase {
                 connect: data.branchmanagerid,
               }
             : undefined,
+
+          test: data.test
+            ? {
+                connect: data.test,
+              }
+            : undefined,
         },
         select: {
           address: true,
@@ -184,6 +201,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
+          status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });
@@ -197,11 +223,7 @@ export class BranchControllerBase {
     }
   }
 
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "delete",
-    possession: "any",
-  })
+  @Public()
   @common.Delete("/:id")
   @swagger.ApiOkResponse({ type: Branch })
   @swagger.ApiNotFoundResponse({ type: errors.NotFoundException })
@@ -225,6 +247,15 @@ export class BranchControllerBase {
           branchName: true,
           createdAt: true,
           id: true,
+          location: true,
+          status: true,
+
+          test: {
+            select: {
+              id: true,
+            },
+          },
+
           updatedAt: true,
         },
       });

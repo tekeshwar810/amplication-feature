@@ -17,8 +17,7 @@ import { GqlDefaultAuthGuard } from "../../auth/gqlDefaultAuth.guard";
 import * as gqlACGuard from "../../auth/gqlAC.guard";
 import { isRecordNotFoundError } from "../../prisma.util";
 import { MetaQueryPayload } from "../../util/MetaQueryPayload";
-import { AclFilterResponseInterceptor } from "../../interceptors/aclFilterResponse.interceptor";
-import { AclValidateRequestInterceptor } from "../../interceptors/aclValidateRequest.interceptor";
+import { Public } from "../../decorators/public.decorator";
 import { CreateBranchArgs } from "./CreateBranchArgs";
 import { UpdateBranchArgs } from "./UpdateBranchArgs";
 import { DeleteBranchArgs } from "./DeleteBranchArgs";
@@ -36,12 +35,8 @@ export class BranchResolverBase {
     protected readonly rolesBuilder: nestAccessControl.RolesBuilder
   ) {}
 
+  @Public()
   @graphql.Query(() => MetaQueryPayload)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
   async _branchesMeta(
     @graphql.Args() args: BranchFindManyArgs
   ): Promise<MetaQueryPayload> {
@@ -55,24 +50,14 @@ export class BranchResolverBase {
     };
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => [Branch])
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "any",
-  })
   async branches(@graphql.Args() args: BranchFindManyArgs): Promise<Branch[]> {
     return this.service.findMany(args);
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.Query(() => Branch, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "read",
-    possession: "own",
-  })
   async branch(
     @graphql.Args() args: BranchFindUniqueArgs
   ): Promise<Branch | null> {
@@ -83,13 +68,8 @@ export class BranchResolverBase {
     return result;
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Branch)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "create",
-    possession: "any",
-  })
   async createBranch(@graphql.Args() args: CreateBranchArgs): Promise<Branch> {
     return await this.service.create({
       ...args,
@@ -101,17 +81,18 @@ export class BranchResolverBase {
               connect: args.data.branchmanagerid,
             }
           : undefined,
+
+        test: args.data.test
+          ? {
+              connect: args.data.test,
+            }
+          : undefined,
       },
     });
   }
 
-  @common.UseInterceptors(AclValidateRequestInterceptor)
+  @Public()
   @graphql.Mutation(() => Branch)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "update",
-    possession: "any",
-  })
   async updateBranch(
     @graphql.Args() args: UpdateBranchArgs
   ): Promise<Branch | null> {
@@ -126,6 +107,12 @@ export class BranchResolverBase {
                 connect: args.data.branchmanagerid,
               }
             : undefined,
+
+          test: args.data.test
+            ? {
+                connect: args.data.test,
+              }
+            : undefined,
         },
       });
     } catch (error) {
@@ -138,12 +125,8 @@ export class BranchResolverBase {
     }
   }
 
+  @Public()
   @graphql.Mutation(() => Branch)
-  @nestAccessControl.UseRoles({
-    resource: "Branch",
-    action: "delete",
-    possession: "any",
-  })
   async deleteBranch(
     @graphql.Args() args: DeleteBranchArgs
   ): Promise<Branch | null> {
@@ -159,17 +142,23 @@ export class BranchResolverBase {
     }
   }
 
-  @common.UseInterceptors(AclFilterResponseInterceptor)
+  @Public()
   @graphql.ResolveField(() => User, { nullable: true })
-  @nestAccessControl.UseRoles({
-    resource: "User",
-    action: "read",
-    possession: "any",
-  })
   async branchmanagerid(
     @graphql.Parent() parent: Branch
   ): Promise<User | null> {
     const result = await this.service.getBranchmanagerid(parent.id);
+
+    if (!result) {
+      return null;
+    }
+    return result;
+  }
+
+  @Public()
+  @graphql.ResolveField(() => User, { nullable: true })
+  async test(@graphql.Parent() parent: Branch): Promise<User | null> {
+    const result = await this.service.getTest(parent.id);
 
     if (!result) {
       return null;

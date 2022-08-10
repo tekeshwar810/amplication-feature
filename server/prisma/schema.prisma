@@ -8,7 +8,7 @@ generator client {
 }
 
 model User {
-  branches  Branch[]
+  branches  Branch[] @relation(name: "branches")
   createdAt DateTime @default(now())
   email     String   @unique
   firstName String?
@@ -16,6 +16,7 @@ model User {
   lastName  String?
   password  String
   roles     String[]
+  test      Branch[] @relation(name: "BranchTestUserTest")
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
@@ -23,11 +24,15 @@ model User {
 model Branch {
   address           String?
   branchCode        String?
-  branchmanagerid   User?    @relation(fields: [branchmanageridId], references: [id])
+  branchmanagerid   User?    @relation(name: "branches", fields: [branchmanageridId], references: [id])
   branchmanageridId String?
   branchName        String?
   createdAt         DateTime @default(now())
   id                String   @id @default(cuid())
+  location          String?
+  status            String?
+  test              User?    @relation(name: "BranchTestUserTest", fields: [testId], references: [id])
+  testId            String?
   updatedAt         DateTime @updatedAt
 }
 

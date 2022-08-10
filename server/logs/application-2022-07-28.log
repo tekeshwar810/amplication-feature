@@ -7391,3 +7391,45 @@
 
 2022-07-28 18:38:22 [undefined] info: GET /api/branches 200 452 - 13.522 ms
 
+2022-07-28 18:40:10 [undefined] info: GET /api/branches 200 452 - 33.497 ms
+
+2022-07-28 18:40:13 [undefined] info: GET /api/branches 401 43 - 10.113 ms
+
+2022-07-28 18:40:14 [undefined] info: GET /api/branches 401 43 - 4.628 ms
+
+2022-07-28 18:42:31 [undefined] info: GET /api/branches 401 43 - 32.418 ms
+
+2022-07-28 18:42:31 [undefined] info: GET /api/branches 401 43 - 5.739 ms
+
+2022-07-28 18:42:32 [undefined] info: GET /api/branches 401 43 - 4.108 ms
+
+2022-07-28 18:42:32 [undefined] info: GET /api/branches 401 43 - 3.940 ms
+
+2022-07-28 18:42:32 [undefined] info: GET /api/branches 401 43 - 4.786 ms
+
+2022-07-28 18:42:32 [undefined] info: GET /api/branches 401 43 - 1.091 ms
+
+2022-07-28 18:42:32 [undefined] info: GET /api/branches 401 43 - 3.429 ms
+
+2022-07-28 18:42:33 [undefined] info: GET /api/branches 401 43 - 3.884 ms
+
+2022-07-28 18:42:40 [undefined] info: GET /api/branches 200 452 - 38.320 ms
+
+2022-07-28 18:42:49 [undefined] info: GET /api/branches 401 43 - 20.724 ms
+
+2022-07-28 18:42:50 [undefined] info: GET /api/branches 401 43 - 5.319 ms
+
+2022-07-28 18:42:50 [undefined] info: GET /api/branches 401 43 - 0.960 ms
+
+2022-07-28 18:42:50 [undefined] info: GET /api/branches 401 43 - 1.171 ms
+
+2022-07-28 18:43:25 [undefined] info: GET /api/branches 401 43 - 1.565 ms
+
+2022-07-28 18:43:28 [undefined] info: GET /api/branches 401 43 - 1.289 ms
+
+2022-07-28 18:43:28 [undefined] info: GET /api/branches 401 43 - 0.784 ms
+
+2022-07-28 18:43:29 [undefined] info: GET /api/branches 401 43 - 0.821 ms
+
+2022-07-28 18:43:29 [undefined] info: GET /api/branches 401 43 - 0.865 ms
+

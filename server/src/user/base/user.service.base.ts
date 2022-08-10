@@ -82,4 +82,15 @@ export class UserServiceBase {
       })
       .branches(args);
   }
+
+  async findTest(
+    parentId: string,
+    args: Prisma.BranchFindManyArgs
+  ): Promise<Branch[]> {
+    return this.prisma.user
+      .findUnique({
+        where: { id: parentId },
+      })
+      .test(args);
+  }
 }

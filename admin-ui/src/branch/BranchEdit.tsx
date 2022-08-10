@@ -23,6 +23,11 @@ export const BranchEdit = (props: EditProps): React.ReactElement => {
           <SelectInput optionText={UserTitle} />
         </ReferenceInput>
         <TextInput label="branchName" source="branchName" />
+        <TextInput label="location" source="location" />
+        <TextInput label="status" source="status" />
+        <ReferenceInput source="user.id" reference="User" label="test">
+          <SelectInput optionText={UserTitle} />
+        </ReferenceInput>
       </SimpleForm>
     </Edit>
   );

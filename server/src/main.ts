@@ -37,9 +37,8 @@ async function main() {
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
-    }),
+    })
   );
-
 
   const document = SwaggerModule.createDocument(app, swaggerDocumentOptions);
 

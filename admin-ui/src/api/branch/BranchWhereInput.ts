@@ -8,4 +8,7 @@ export type BranchWhereInput = {
   branchmanagerid?: UserWhereUniqueInput;
   branchName?: StringNullableFilter;
   id?: StringFilter;
+  location?: StringNullableFilter;
+  status?: StringNullableFilter;
+  test?: UserWhereUniqueInput;
 };
