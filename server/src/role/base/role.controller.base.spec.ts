@@ -16,6 +16,7 @@ const CREATE_INPUT = {
   name: "exampleName",
   roleId: 42,
   updatedAt: new Date(),
+  userid: "exampleUserid",
 };
 const CREATE_RESULT = {
   createdAt: new Date(),
@@ -23,6 +24,7 @@ const CREATE_RESULT = {
   name: "exampleName",
   roleId: 42,
   updatedAt: new Date(),
+  userid: "exampleUserid",
 };
 const FIND_MANY_RESULT = [
   {
@@ -31,6 +33,7 @@ const FIND_MANY_RESULT = [
     name: "exampleName",
     roleId: 42,
     updatedAt: new Date(),
+    userid: "exampleUserid",
   },
 ];
 const FIND_ONE_RESULT = {
@@ -39,6 +42,7 @@ const FIND_ONE_RESULT = {
   name: "exampleName",
   roleId: 42,
   updatedAt: new Date(),
+  userid: "exampleUserid",
 };
 
 const service = {

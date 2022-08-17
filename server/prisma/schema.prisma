@@ -46,10 +46,12 @@ model Product {
 
 model Role {
   createdAt DateTime @default(now())
+  fiadminid Json?
   id        String   @id @default(cuid())
   name      String?
   roleId    Int?
   updatedAt DateTime @updatedAt
+  userid    String?
 }
 
 model Fi {
@@ -57,5 +59,12 @@ model Fi {
   createdAt DateTime @default(now())
   id        String   @id @default(cuid())
   name      String?  @unique
+  updatedAt DateTime @updatedAt
+}
+
+model Testing {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  testName  String?
   updatedAt DateTime @updatedAt
 }

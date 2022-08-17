@@ -1,11 +1,6 @@
 import { ValidationPipe } from "@nestjs/common";
 import { NestFactory } from "@nestjs/core";
 import { OpenAPIObject, SwaggerModule } from "@nestjs/swagger";
-import express, { Request,Response,NextFunction } from 'express';
-// import { morgan } from 'morgan'
-const morgan = require('morgan')
-import  fs   from 'fs';
-import { Logger } from "winston";
 // @ts-ignore
 // eslint-disable-next-line
 import { AppModule } from "./app.module";
@@ -16,24 +11,13 @@ import {
   // @ts-ignore
   // eslint-disable-next-line
 } from "./swagger";
-import d from "./util/logger";
-// var accessLogStream = fs.createWriteStream('logs/application-2022-07-21.log',{flags: 'a'});
 
 const { PORT = 3000 } = process.env;
 
 async function main() {
   const app = await NestFactory.create(AppModule, { cors: true });
 
-  function globalMiddleware(req:Request,res:Response,next:NextFunction){
-    app.use(express.static('uploads'));
-    next()
-  }
-  
-
   app.setGlobalPrefix("api");
-  app.use(globalMiddleware)
-  app.use(morgan('tiny', { stream:  d.stream }));
-
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
