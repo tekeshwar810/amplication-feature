@@ -42,7 +42,6 @@ export class UserControllerBase {
   @swagger.ApiCreatedResponse({ type: User })
   @swagger.ApiForbiddenResponse({ type: errors.ForbiddenException })
   async create(@common.Body() data: UserCreateInput): Promise<User> {
-    console.log('create data')
     return await this.service.create({
       data: data,
       select: {
@@ -53,6 +52,7 @@ export class UserControllerBase {
         lastName: true,
         roles: true,
         updatedAt: true,
+        userId: true,
         username: true,
       },
     });
@@ -75,6 +75,7 @@ export class UserControllerBase {
         lastName: true,
         roles: true,
         updatedAt: true,
+        userId: true,
         username: true,
       },
     });
@@ -98,6 +99,7 @@ export class UserControllerBase {
         lastName: true,
         roles: true,
         updatedAt: true,
+        userId: true,
         username: true,
       },
     });
@@ -130,6 +132,7 @@ export class UserControllerBase {
           lastName: true,
           roles: true,
           updatedAt: true,
+          userId: true,
           username: true,
         },
       });
@@ -162,6 +165,7 @@ export class UserControllerBase {
           lastName: true,
           roles: true,
           updatedAt: true,
+          userId: true,
           username: true,
         },
       });

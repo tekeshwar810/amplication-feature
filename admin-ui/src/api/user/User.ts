@@ -10,5 +10,6 @@ export type User = {
   roles: Array<string>;
   test?: Array<Branch>;
   updatedAt: Date;
+  userId: string | null;
   username: string;
 };

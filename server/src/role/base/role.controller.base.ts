@@ -27,7 +27,6 @@ import { RoleWhereUniqueInput } from "./RoleWhereUniqueInput";
 import { RoleFindManyArgs } from "./RoleFindManyArgs";
 import { RoleUpdateInput } from "./RoleUpdateInput";
 import { Role } from "./Role";
-import { Public } from "src/decorators/public.decorator";
 @swagger.ApiBearerAuth()
 @common.UseGuards(defaultAuthGuard.DefaultAuthGuard, nestAccessControl.ACGuard)
 export class RoleControllerBase {
@@ -50,10 +49,12 @@ export class RoleControllerBase {
       data: data,
       select: {
         createdAt: true,
+        fiadminid: true,
         id: true,
         name: true,
         roleId: true,
         updatedAt: true,
+        userid: true,
       },
     });
   }
@@ -64,7 +65,6 @@ export class RoleControllerBase {
     action: "read",
     possession: "any",
   })
-
   @common.Get()
   @swagger.ApiOkResponse({ type: [Role] })
   @swagger.ApiForbiddenResponse()
@@ -75,10 +75,12 @@ export class RoleControllerBase {
       ...args,
       select: {
         createdAt: true,
+        fiadminid: true,
         id: true,
         name: true,
         roleId: true,
         updatedAt: true,
+        userid: true,
       },
     });
   }
@@ -100,10 +102,12 @@ export class RoleControllerBase {
       where: params,
       select: {
         createdAt: true,
+        fiadminid: true,
         id: true,
         name: true,
         roleId: true,
         updatedAt: true,
+        userid: true,
       },
     });
     if (result === null) {
@@ -134,10 +138,12 @@ export class RoleControllerBase {
         data: data,
         select: {
           createdAt: true,
+          fiadminid: true,
           id: true,
           name: true,
           roleId: true,
           updatedAt: true,
+          userid: true,
         },
       });
     } catch (error) {
@@ -167,10 +173,12 @@ export class RoleControllerBase {
         where: params,
         select: {
           createdAt: true,
+          fiadminid: true,
           id: true,
           name: true,
           roleId: true,
           updatedAt: true,
+          userid: true,
         },
       });
     } catch (error) {
