@@ -76,3 +76,10 @@ model Demo {
   id        String   @id @default(cuid())
   updatedAt DateTime @updatedAt
 }
+
+model Feature {
+  createdAt   DateTime @default(now())
+  featureName String?
+  id          String   @id @default(cuid())
+  updatedAt   DateTime @updatedAt
+}

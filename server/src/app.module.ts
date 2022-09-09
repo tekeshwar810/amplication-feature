@@ -8,6 +8,7 @@ import { RoleModule } from "./role/role.module";
 import { FiModule } from "./fi/fi.module";
 import { TestingModule } from "./testing/testing.module";
 import { DemoModule } from "./demo/demo.module";
+import { FeatureModule } from "./feature/feature.module";
 import { ACLModule } from "./auth/acl.module";
 import { AuthModule } from "./auth/auth.module";
 import { HealthModule } from "./health/health.module";
@@ -27,6 +28,7 @@ import { GraphQLModule } from "@nestjs/graphql";
     FiModule,
     TestingModule,
     DemoModule,
+    FeatureModule,
     ACLModule,
     AuthModule,
     HealthModule,

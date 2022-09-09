@@ -33,6 +33,10 @@ import { DemoList } from "./demo/DemoList";
 import { DemoCreate } from "./demo/DemoCreate";
 import { DemoEdit } from "./demo/DemoEdit";
 import { DemoShow } from "./demo/DemoShow";
+import { FeatureList } from "./feature/FeatureList";
+import { FeatureCreate } from "./feature/FeatureCreate";
+import { FeatureEdit } from "./feature/FeatureEdit";
+import { FeatureShow } from "./feature/FeatureShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -107,6 +111,13 @@ const App = (): React.ReactElement => {
           edit={DemoEdit}
           create={DemoCreate}
           show={DemoShow}
+        />
+        <Resource
+          name="Feature"
+          list={FeatureList}
+          edit={FeatureEdit}
+          create={FeatureCreate}
+          show={FeatureShow}
         />
       </Admin>
     </div>
