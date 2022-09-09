@@ -89,6 +89,17 @@ class UserCreateInput {
   test?: BranchCreateNestedManyWithoutUsersInput;
 
   @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
+  userId?: string | null;
+
+  @ApiProperty({
     required: true,
     type: String,
   })

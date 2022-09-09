@@ -11,8 +11,10 @@ export const RoleCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <div />
         <TextInput label="name" source="name" />
         <NumberInput step={1} label="roleId" source="roleId" />
+        <div />
       </SimpleForm>
     </Create>
   );

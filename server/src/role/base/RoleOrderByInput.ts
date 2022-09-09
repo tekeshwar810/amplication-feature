@@ -34,6 +34,15 @@ class RoleOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  fiadminid?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   id?: SortOrder;
 
   @ApiProperty({
@@ -62,6 +71,15 @@ class RoleOrderByInput {
     nullable: true,
   })
   updatedAt?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
+  userid?: SortOrder;
 }
 
 export { RoleOrderByInput };

@@ -25,6 +25,14 @@ import { FiList } from "./fi/FiList";
 import { FiCreate } from "./fi/FiCreate";
 import { FiEdit } from "./fi/FiEdit";
 import { FiShow } from "./fi/FiShow";
+import { TestingList } from "./testing/TestingList";
+import { TestingCreate } from "./testing/TestingCreate";
+import { TestingEdit } from "./testing/TestingEdit";
+import { TestingShow } from "./testing/TestingShow";
+import { DemoList } from "./demo/DemoList";
+import { DemoCreate } from "./demo/DemoCreate";
+import { DemoEdit } from "./demo/DemoEdit";
+import { DemoShow } from "./demo/DemoShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -85,6 +93,20 @@ const App = (): React.ReactElement => {
           edit={FiEdit}
           create={FiCreate}
           show={FiShow}
+        />
+        <Resource
+          name="Testing"
+          list={TestingList}
+          edit={TestingEdit}
+          create={TestingCreate}
+          show={TestingShow}
+        />
+        <Resource
+          name="Demo"
+          list={DemoList}
+          edit={DemoEdit}
+          create={DemoCreate}
+          show={DemoShow}
         />
       </Admin>
     </div>

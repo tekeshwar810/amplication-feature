@@ -43,6 +43,7 @@ export const UserEdit = (props: EditProps): React.ReactElement => {
         >
           <SelectArrayInput optionText={BranchTitle} />
         </ReferenceArrayInput>
+        <TextInput label="userId" source="userId" />
         <TextInput label="Username" source="username" />
       </SimpleForm>
     </Edit>

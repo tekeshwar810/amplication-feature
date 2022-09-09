@@ -13,10 +13,12 @@ export const RoleList = (props: ListProps): React.ReactElement => {
     >
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
+        <TextField label="fiadminid" source="fiadminid" />
         <TextField label="ID" source="id" />
         <TextField label="name" source="name" />
         <TextField label="roleId" source="roleId" />
         <DateField source="updatedAt" label="Updated At" />
+        <TextField label="userid" source="userid" />
       </Datagrid>
     </List>
   );

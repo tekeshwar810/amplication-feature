@@ -8,5 +8,6 @@ export type UserUpdateInput = {
   password?: string;
   roles?: Array<string>;
   test?: BranchUpdateManyWithoutUsersInput;
+  userId?: string | null;
   username?: string;
 };
