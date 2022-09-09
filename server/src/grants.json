@@ -406,5 +406,125 @@
     "resource": "Demo",
     "action": "read:any",
     "attributes": "*"
+  },
+  {
+    "role": "superadmin",
+    "resource": "Feature",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "fiadmin",
+    "resource": "Feature",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Feature",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "loanofficer",
+    "resource": "Feature",
+    "action": "read:own",
+    "attributes": "*"
+  },
+  {
+    "role": "superadmin",
+    "resource": "Feature",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "fiadmin",
+    "resource": "Feature",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Feature",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "loanofficer",
+    "resource": "Feature",
+    "action": "create:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superadmin",
+    "resource": "Feature",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "fiadmin",
+    "resource": "Feature",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Feature",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "loanofficer",
+    "resource": "Feature",
+    "action": "update:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superadmin",
+    "resource": "Feature",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "fiadmin",
+    "resource": "Feature",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Feature",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "loanofficer",
+    "resource": "Feature",
+    "action": "delete:any",
+    "attributes": "*"
+  },
+  {
+    "role": "superadmin",
+    "resource": "Feature",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "fiadmin",
+    "resource": "Feature",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "manager",
+    "resource": "Feature",
+    "action": "read:any",
+    "attributes": "*"
+  },
+  {
+    "role": "loanofficer",
+    "resource": "Feature",
+    "action": "read:any",
+    "attributes": "*"
   }
 ]
