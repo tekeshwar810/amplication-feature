@@ -50,6 +50,7 @@ export class TestingControllerBase {
       select: {
         createdAt: true,
         id: true,
+        lastName: true,
         testName: true,
         updatedAt: true,
       },
@@ -73,6 +74,7 @@ export class TestingControllerBase {
       select: {
         createdAt: true,
         id: true,
+        lastName: true,
         testName: true,
         updatedAt: true,
       },
@@ -97,6 +99,7 @@ export class TestingControllerBase {
       select: {
         createdAt: true,
         id: true,
+        lastName: true,
         testName: true,
         updatedAt: true,
       },
@@ -130,6 +133,7 @@ export class TestingControllerBase {
         select: {
           createdAt: true,
           id: true,
+          lastName: true,
           testName: true,
           updatedAt: true,
         },
@@ -162,6 +166,7 @@ export class TestingControllerBase {
         select: {
           createdAt: true,
           id: true,
+          lastName: true,
           testName: true,
           updatedAt: true,
         },

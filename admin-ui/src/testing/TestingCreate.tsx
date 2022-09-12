@@ -5,6 +5,7 @@ export const TestingCreate = (props: CreateProps): React.ReactElement => {
   return (
     <Create {...props}>
       <SimpleForm>
+        <TextInput label="last_name" source="lastName" />
         <TextInput label="test_name" source="testName" />
       </SimpleForm>
     </Create>

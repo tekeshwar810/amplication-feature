@@ -14,6 +14,7 @@ export const TestingList = (props: ListProps): React.ReactElement => {
       <Datagrid rowClick="show">
         <DateField source="createdAt" label="Created At" />
         <TextField label="ID" source="id" />
+        <TextField label="last_name" source="lastName" />
         <TextField label="test_name" source="testName" />
         <DateField source="updatedAt" label="Updated At" />
       </Datagrid>

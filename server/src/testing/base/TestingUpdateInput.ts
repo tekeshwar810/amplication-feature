@@ -23,6 +23,17 @@ class TestingUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  lastName?: string | null;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   testName?: string | null;
 }
 export { TestingUpdateInput };
