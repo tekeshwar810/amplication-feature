@@ -43,6 +43,15 @@ class TestingOrderByInput {
   @Field(() => SortOrder, {
     nullable: true,
   })
+  lastName?: SortOrder;
+
+  @ApiProperty({
+    required: false,
+    enum: ["asc", "desc"],
+  })
+  @Field(() => SortOrder, {
+    nullable: true,
+  })
   testName?: SortOrder;
 
   @ApiProperty({
