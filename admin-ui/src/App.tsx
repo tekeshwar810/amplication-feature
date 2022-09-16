@@ -37,6 +37,10 @@ import { FeatureList } from "./feature/FeatureList";
 import { FeatureCreate } from "./feature/FeatureCreate";
 import { FeatureEdit } from "./feature/FeatureEdit";
 import { FeatureShow } from "./feature/FeatureShow";
+import { ExpenseList } from "./expense/ExpenseList";
+import { ExpenseCreate } from "./expense/ExpenseCreate";
+import { ExpenseEdit } from "./expense/ExpenseEdit";
+import { ExpenseShow } from "./expense/ExpenseShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -118,6 +122,13 @@ const App = (): React.ReactElement => {
           edit={FeatureEdit}
           create={FeatureCreate}
           show={FeatureShow}
+        />
+        <Resource
+          name="Expense"
+          list={ExpenseList}
+          edit={ExpenseEdit}
+          create={ExpenseCreate}
+          show={ExpenseShow}
         />
       </Admin>
     </div>

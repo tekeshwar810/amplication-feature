@@ -84,3 +84,10 @@ model Feature {
   id          String   @id @default(cuid())
   updatedAt   DateTime @updatedAt
 }
+
+model Expense {
+  createdAt    DateTime @default(now())
+  exprensename String?
+  id           String   @id @default(cuid())
+  updatedAt    DateTime @updatedAt
+}
